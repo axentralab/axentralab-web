@@ -11,8 +11,20 @@ exports.getServices = async (req, res) => {
 
 exports.getService = async (req, res) => {
   try {
-    const service = await Service.findOne({ slug: req.params.slug });
-    if (!service) return res.status(404).json({ success: false, message: 'Service not found' });
+    const { slug } = req.params;
+    
+    // Try to find by slug first, then by MongoDB ID
+    let service = await Service.findOne({ slug });
+    
+    if (!service) {
+      // If not found by slug, try by MongoDB ID (for admin operations)
+      service = await Service.findById(slug);
+    }
+    
+    if (!service) {
+      return res.status(404).json({ success: false, message: 'Service not found' });
+    }
+    
     res.json({ success: true, data: service });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });

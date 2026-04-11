@@ -4,7 +4,7 @@ const { createOrder, getMyOrders, getOrder, getAllOrders, updateOrderStatus } = 
 const { protect, adminOnly } = require('../middleware/auth');
 
 router.post('/',              protect, createOrder);
-router.get('/mine',           protect, getMyOrders);
+router.get('/my-orders',      protect, getMyOrders);
 router.get('/:id',            protect, getOrder);
 router.get('/',               protect, adminOnly, getAllOrders);
 router.put('/:id/status',     protect, adminOnly, updateOrderStatus);
