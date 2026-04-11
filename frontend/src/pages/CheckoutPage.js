@@ -4,6 +4,7 @@ import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import api, { apiErrorMessage } from '../services/api';
+import { ReferralCtaBanner } from '../components/ui/ReferralPromoAd';
 
 const PRIMARY  = '#6366F1';
 const ACCENT   = '#8B5CF6';
@@ -167,6 +168,11 @@ export default function CheckoutPage() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* ── REFERRAL CTA BANNER ────────────────────────────────────────── */}
+          <div style={{ marginTop: 60 }}>
+            <ReferralCtaBanner />
           </div>
         </div>
       </div>

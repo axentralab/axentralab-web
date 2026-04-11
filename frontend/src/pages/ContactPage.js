@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import api from '../services/api';
 
-
+const HERO_BG_IMAGE = process.env.REACT_APP_CONTACT_HERO_BG_IMAGE || '/images/contact-hero-bg.png';
 
 const SERVICES = ['AI Automation','Web Development','Cybersecurity','DevOps & Cloud','SaaS Development','IT Consulting','Other'];
 const BUDGETS  = ['Under $5k','$5k – $15k','$15k – $50k','$50k+','Let\'s discuss'];
@@ -37,8 +37,8 @@ export default function ContactPage() {
 
   const inputStyle = (k) => ({
     width: '100%',
-    background: focused === k ? 'rgba(34,197,94,0.04)' : 'rgba(255,255,255,0.03)',
-    border: `1px solid ${focused === k ? 'rgba(34,197,94,0.5)' : 'rgba(255,255,255,0.09)'}`,
+    background: focused === k ? 'rgba(139,92,246,0.04)' : 'rgba(255,255,255,0.03)',
+    border: `1px solid ${focused === k ? 'rgba(139,92,246,0.5)' : 'rgba(255,255,255,0.09)'}`,
     borderRadius: 10,
     padding: '11px 14px',
     color: '#fff',
@@ -47,7 +47,7 @@ export default function ContactPage() {
     outline: 'none',
     transition: 'all 0.2s',
     boxSizing: 'border-box',
-    boxShadow: focused === k ? '0 0 0 3px rgba(34,197,94,0.08)' : 'none',
+    boxShadow: focused === k ? '0 0 0 3px rgba(139,92,246,0.08)' : 'none',
   });
 
   const labelStyle = {
@@ -71,8 +71,8 @@ export default function ContactPage() {
         @keyframes spin   { to{transform:rotate(360deg)} }
         .contact-input::placeholder { color: rgba(255,255,255,0.18); }
         .contact-input option { background: #0a0f1a; color: #fff; }
-        .trust-card:hover  { border-color: rgba(34,197,94,0.25) !important; transform: translateY(-2px); }
-        .submit-btn:hover:not(:disabled) { background: #16a34a !important; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(34,197,94,0.25) !important; }
+        .trust-card:hover  { border-color: rgba(139,92,246,0.25) !important; transform: translateY(-2px); }
+        .submit-btn:hover:not(:disabled) { background: #16a34a !important; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(139,92,246,0.25) !important; }
         .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
         /* ── Responsive Layout ── */
@@ -139,32 +139,36 @@ export default function ContactPage() {
 
         {/* bg scanline sweep */}
         <div style={{ position:'fixed', top:0, left:0, right:0, bottom:0, pointerEvents:'none', zIndex:0, overflow:'hidden' }}>
-          <div style={{ position:'absolute', top:0, left:0, right:0, height:2, background:'linear-gradient(90deg,transparent,rgba(34,197,94,0.06),transparent)', animation:'scan 8s linear infinite' }} />
+          <div style={{ position:'absolute', top:0, left:0, right:0, height:2, background:'linear-gradient(90deg,transparent,rgba(139,92,246,0.06),transparent)', animation:'scan 8s linear infinite' }} />
         </div>
 
         {/* bg glow blobs */}
-        <div style={{ position:'fixed', top:'15%', left:'-8%', width:400, height:400, borderRadius:'50%', background:'radial-gradient(circle,rgba(34,197,94,0.055) 0%,transparent 70%)', pointerEvents:'none', zIndex:0 }} />
+        <div style={{ position:'fixed', top:'15%', left:'-8%', width:400, height:400, borderRadius:'50%', background:'radial-gradient(circle,rgba(139,92,246,0.055) 0%,transparent 70%)', pointerEvents:'none', zIndex:0 }} />
         <div style={{ position:'fixed', bottom:'10%', right:'-5%', width:340, height:340, borderRadius:'50%', background:'radial-gradient(circle,rgba(59,130,246,0.04) 0%,transparent 70%)', pointerEvents:'none', zIndex:0 }} />
 
         <div style={{ position:'relative', zIndex:1, maxWidth:1160, margin:'0 auto', padding:'0 clamp(16px,5%,5%)' }}>
 
-          {/* ── Page Header ── */}
-          <div style={{ textAlign:'center', marginBottom:'clamp(36px,6vw,64px)' }}>
-            <div style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'5px 14px', borderRadius:999, border:'1px solid rgba(34,197,94,0.25)', background:'rgba(34,197,94,0.06)', marginBottom:18 }}>
-              <span style={{ width:7, height:7, borderRadius:'50%', background:'#22C55E', display:'inline-block', animation:'blink 1.4s ease-in-out infinite' }} />
-              <span style={{ fontFamily:"'Space Mono',monospace", fontSize:10, color:'#22C55E', letterSpacing:2, textTransform:'uppercase', fontWeight:700 }}>Secure Channel Open</span>
+          {/* ── HERO SECTION ── */}
+          <section style={{ position: 'relative', overflow: 'hidden', borderRadius: 20, marginBottom: 56, padding: '56px 20px' }}>
+            <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${HERO_BG_IMAGE})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(100deg, rgba(6,8,15,0.9) 0%, rgba(6,8,15,0.72) 48%, rgba(6,8,15,0.9) 100%)' }} />
+            <div style={{ position: 'relative', zIndex: 2, textAlign:'center', marginBottom:'clamp(36px,6vw,64px)' }}>
+              <div style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'5px 14px', borderRadius:999, border:'1px solid rgba(139,92,246,0.25)', background:'rgba(139,92,246,0.06)', marginBottom:18 }}>
+                <span style={{ width:7, height:7, borderRadius:'50%', background:'#8B5CF6', display:'inline-block', animation:'blink 1.4s ease-in-out infinite' }} />
+                <span style={{ fontFamily:"'Space Mono',monospace", fontSize:10, color:'#8B5CF6', letterSpacing:2, textTransform:'uppercase', fontWeight:700 }}>Secure Channel Open</span>
+              </div>
+              <h1 style={{ fontFamily:"'Sora',sans-serif", fontSize:'clamp(32px,5.5vw,64px)', fontWeight:900, color:'#fff', letterSpacing:-2, lineHeight:1.05, margin:'0 0 16px' }}>
+                Let's Build<br />
+                <span style={{ WebkitTextStroke:'1px rgba(139,92,246,0.6)', color:'transparent' }}>Something</span>
+                {' '}<span style={{ color:'#8B5CF6' }}>Real</span>
+              </h1>
+              <p style={{ color:'rgba(255,255,255,0.38)', fontSize:15, maxWidth:400, margin:'0 auto', lineHeight:1.8, fontFamily:"'DM Sans',sans-serif" }}>
+                Tell us about your project. We respond within 24 hours with a tailored proposal — no generic templates.
+              </p>
             </div>
-            <h1 style={{ fontFamily:"'Sora',sans-serif", fontSize:'clamp(32px,5.5vw,64px)', fontWeight:900, color:'#fff', letterSpacing:-2, lineHeight:1.05, margin:'0 0 16px' }}>
-              Let's Build<br />
-              <span style={{ WebkitTextStroke:'1px rgba(34,197,94,0.6)', color:'transparent' }}>Something</span>
-              {' '}<span style={{ color:'#22C55E' }}>Real</span>
-            </h1>
-            <p style={{ color:'rgba(255,255,255,0.38)', fontSize:15, maxWidth:400, margin:'0 auto', lineHeight:1.8, fontFamily:"'DM Sans',sans-serif" }}>
-              Tell us about your project. We respond within 24 hours with a tailored proposal — no generic templates.
-            </p>
-          </div>
+          </section>
 
-          {/* ── Main Grid ── */}
+          {/* ── Main Content ── */}
           <div className="contact-main-grid">
 
             {/* ── LEFT PANEL ── */}
@@ -174,20 +178,20 @@ export default function ContactPage() {
               <div style={{ background:'rgba(255,255,255,0.025)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:20, overflow:'hidden' }}>
                 <div style={{ padding:'12px 18px', background:'rgba(255,255,255,0.03)', borderBottom:'1px solid rgba(255,255,255,0.06)', display:'flex', alignItems:'center', gap:8 }}>
                   <div style={{ display:'flex', gap:5 }}>
-                    {['#EF4444','#F59E0B','#22C55E'].map((c,i) => <div key={i} style={{ width:10, height:10, borderRadius:'50%', background:c, opacity:0.7 }} />)}
+                    {['#EF4444','#F59E0B','#8B5CF6'].map((c,i) => <div key={i} style={{ width:10, height:10, borderRadius:'50%', background:c, opacity:0.7 }} />)}
                   </div>
                   <span style={{ fontFamily:"'Space Mono',monospace", fontSize:10, color:'rgba(255,255,255,0.2)', letterSpacing:1 }}>axentralab — contact.sh</span>
                 </div>
                 <div style={{ padding:'20px 18px', fontFamily:"'Space Mono',monospace", fontSize:12, lineHeight:2 }}>
                   {[
-                    { prompt:'>', cmd:'init contact_session', color:'#22C55E' },
+                    { prompt:'>', cmd:'init contact_session', color:'#8B5CF6' },
                     { prompt:'>', cmd:'channel: encrypted ✓', color:'rgba(255,255,255,0.5)' },
                     { prompt:'>', cmd:'response_time: < 24h', color:'rgba(255,255,255,0.5)' },
                     { prompt:'>', cmd:'nda: available_on_request', color:'rgba(255,255,255,0.5)' },
-                    { prompt:'>', cmd:'status: ready_to_build ▋', color:'#22C55E' },
+                    { prompt:'>', cmd:'status: ready_to_build ▋', color:'#8B5CF6' },
                   ].map((l,i) => (
                     <div key={i} style={{ display:'flex', gap:10, animation:`fadeUp 0.4s ease ${i*0.1}s both` }}>
-                      <span style={{ color:'rgba(34,197,94,0.5)' }}>{l.prompt}</span>
+                      <span style={{ color:'rgba(139,92,246,0.5)' }}>{l.prompt}</span>
                       <span style={{ color:l.color }}>{l.cmd}</span>
                     </div>
                   ))}
@@ -197,7 +201,7 @@ export default function ContactPage() {
               {/* Contact details */}
               <div style={{ display:'flex', flexDirection:'column', gap:10 }}>
                 {[
-                  { icon:'📧', label:'Email',    val:'axentralab@gmail.com',       color:'#22C55E' },
+                  { icon:'📧', label:'Email',    val:'axentralab@gmail.com',       color:'#8B5CF6' },
                   { icon:'📞', label:'Phone',    val:'01322695162 / 01329478744',   color:'#3B82F6' },
                   { icon:'📍', label:'Location', val:'Dhaka, Bangladesh',           color:'#A855F7' },
                 ].map((c,i) => (
@@ -232,7 +236,7 @@ export default function ContactPage() {
               <div style={{ padding:'16px 28px', background:'rgba(255,255,255,0.025)', borderBottom:'1px solid rgba(255,255,255,0.06)', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
                 <span style={{ fontFamily:"'Sora',sans-serif", fontSize:15, fontWeight:800, color:'#fff' }}>Send a Message</span>
                 <div style={{ display:'flex', alignItems:'center', gap:6 }}>
-                  <span style={{ width:7, height:7, borderRadius:'50%', background:'#22C55E', display:'inline-block', animation:'blink 2s ease-in-out infinite' }} />
+                  <span style={{ width:7, height:7, borderRadius:'50%', background:'#8B5CF6', display:'inline-block', animation:'blink 2s ease-in-out infinite' }} />
                   <span style={{ fontFamily:"'Space Mono',monospace", fontSize:9, color:'rgba(255,255,255,0.25)', letterSpacing:1 }}>ENCRYPTED</span>
                 </div>
               </div>
@@ -240,13 +244,13 @@ export default function ContactPage() {
               <div style={{ padding:'clamp(18px,4vw,28px)' }}>
                 {submitted ? (
                   <div style={{ textAlign:'center', padding:'48px 0', animation:'fadeUp 0.5s ease' }}>
-                    <div style={{ width:72, height:72, borderRadius:'50%', background:'rgba(34,197,94,0.1)', border:'2px solid rgba(34,197,94,0.3)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:32, margin:'0 auto 20px' }}>✅</div>
-                    <h2 style={{ fontFamily:"'Sora',sans-serif", color:'#22C55E', fontSize:22, fontWeight:900, marginBottom:10, letterSpacing:-0.5 }}>Message Received!</h2>
+                    <div style={{ width:72, height:72, borderRadius:'50%', background:'rgba(139,92,246,0.1)', border:'2px solid rgba(139,92,246,0.3)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:32, margin:'0 auto 20px' }}>✅</div>
+                    <h2 style={{ fontFamily:"'Sora',sans-serif", color:'#8B5CF6', fontSize:22, fontWeight:900, marginBottom:10, letterSpacing:-0.5 }}>Message Received!</h2>
                     <p style={{ color:'rgba(255,255,255,0.4)', fontSize:14, lineHeight:1.7, fontFamily:"'DM Sans',sans-serif", maxWidth:320, margin:'0 auto' }}>
                       We'll reach out within 24 hours with a personalised proposal tailored to your project.
                     </p>
-                    <div style={{ marginTop:28, padding:'12px 20px', background:'rgba(34,197,94,0.05)', border:'1px solid rgba(34,197,94,0.15)', borderRadius:12, display:'inline-block' }}>
-                      <span style={{ fontFamily:"'Space Mono',monospace", fontSize:11, color:'rgba(34,197,94,0.7)' }}>ref_id: AXL-{Math.floor(Math.random()*90000+10000)}</span>
+                    <div style={{ marginTop:28, padding:'12px 20px', background:'rgba(139,92,246,0.05)', border:'1px solid rgba(139,92,246,0.15)', borderRadius:12, display:'inline-block' }}>
+                      <span style={{ fontFamily:"'Space Mono',monospace", fontSize:11, color:'rgba(139,92,246,0.7)' }}>ref_id: AXL-{Math.floor(Math.random()*90000+10000)}</span>
                     </div>
                   </div>
                 ) : (
@@ -308,7 +312,7 @@ export default function ContactPage() {
 
                       {/* Submit */}
                       <button type="submit" disabled={loading} className="submit-btn"
-                        style={{ padding:'14px', background:'#22C55E', color:'#000', border:'none', borderRadius:12, fontSize:15, fontWeight:800, fontFamily:"'Sora',sans-serif", cursor:'pointer', transition:'all 0.2s', display:'flex', alignItems:'center', justifyContent:'center', gap:10, letterSpacing:-0.3 }}>
+                        style={{ padding:'14px', background:'#8B5CF6', color:'#000', border:'none', borderRadius:12, fontSize:15, fontWeight:800, fontFamily:"'Sora',sans-serif", cursor:'pointer', transition:'all 0.2s', display:'flex', alignItems:'center', justifyContent:'center', gap:10, letterSpacing:-0.3 }}>
                         {loading
                           ? <><span style={{ width:16, height:16, border:'2px solid rgba(0,0,0,0.3)', borderTopColor:'#000', borderRadius:'50%', display:'inline-block', animation:'spin 0.7s linear infinite' }} /> Encrypting & Sending…</>
                           : <><span>Send Message</span><span style={{ fontSize:18 }}>→</span></>

@@ -1,6 +1,10 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+
+const REGISTER_BG_IMAGE =
+  process.env.REACT_APP_REGISTER_BG_IMAGE ||
+  '/images/home-hero-bg.png';
 
 const STEPS = [
   { icon:'📋', title:'Tell us about your project',  desc:'We scope it out and send a fixed-price proposal.' },
@@ -14,10 +18,20 @@ const LOGOS = ['FinNova','BankCo','LearnLoop','Carrgo','Medify','Vaultify'];
 export default function RegisterPage() {
   const { register, loading } = useAuth();
   const navigate = useNavigate();
-  const [form, setForm]     = useState({ name:'', email:'', company:'', password:'', confirm:'' });
+  const [searchParams] = useSearchParams();
+  const [form, setForm]     = useState({ name:'', email:'', company:'', password:'', confirm:'', referralCode: '' });
   const [error, setError]   = useState('');
   const [showPw, setShowPw] = useState(false);
   const [showCf, setShowCf] = useState(false);
+  const [referralInfo, setReferralInfo] = useState(null);
+
+  useEffect(() => {
+    const refCode = searchParams.get('ref');
+    if (refCode) {
+      setForm(prev => ({ ...prev, referralCode: refCode }));
+      setReferralInfo({ code: refCode, message: `✨ Registered with referral link!` });
+    }
+  }, [searchParams]);
 
   const strength = (() => {
     const p = form.password;
@@ -30,14 +44,14 @@ export default function RegisterPage() {
     return s;
   })();
   const strengthLabel = ['','Weak','Fair','Good','Strong'][strength];
-  const strengthColor = ['','#EF4444','#F59E0B','#3B82F6','#22C55E'][strength];
+  const strengthColor = ['','#EF4444','#F59E0B','#3B82F6','#8B5CF6'][strength];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     if (form.password !== form.confirm) return setError('Passwords do not match.');
     if (form.password.length < 6)       return setError('Password must be at least 6 characters.');
-    const result = await register(form.name, form.email, form.password, form.company);
+    const result = await register(form.name, form.email, form.password, form.company, form.referralCode);
     if (result.success) navigate('/dashboard');
     else setError(result.message);
   };
@@ -74,11 +88,25 @@ export default function RegisterPage() {
         .step-item { transition:all 0.2s; }
         .step-item:hover { transform:translateX(4px); }
 
-        /* Layout */
+        /* Layout — wider form column vs login (inverted split) */
         .reg-outer {
+          position:relative;
           min-height:100vh;
           display:grid;
-          grid-template-columns:1fr 1fr;
+          grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);
+          overflow:hidden;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+        }
+        .reg-outer::before {
+          content:'';
+          position:absolute;
+          inset:0;
+          background:linear-gradient(135deg, rgba(7,11,18,0.93) 0%, rgba(15,76,129,0.58) 50%, rgba(7,11,18,0.91) 100%);
+          zIndex:0;
+          pointerEvents:none;
         }
         @media (max-width:900px) {
           .reg-outer { grid-template-columns:1fr !important; }
@@ -90,28 +118,39 @@ export default function RegisterPage() {
         }
       `}</style>
 
-      <div className="reg-outer">
+      <div className="reg-outer" style={{ backgroundImage: `url(${REGISTER_BG_IMAGE})` }}>
 
-        {/* ── LEFT VISUAL PANEL ── */}
-        <div className="reg-left" style={{ position:'relative', background:'#070B12', overflow:'hidden', display:'flex', flexDirection:'column', justifyContent:'space-between', padding:'48px 52px' }}>
-
+        {/* ── LEFT ── */}
+        <div
+          className="reg-left"
+          style={{
+            position: 'relative',
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '48px 52px',
+            borderRight: '1px solid rgba(59,130,246,0.14)',
+            zIndex: 1,
+          }}
+        >
           {/* diagonal stripe bg */}
-          <div style={{ position:'absolute', inset:0, backgroundImage:'repeating-linear-gradient(135deg,rgba(59,130,246,0.03) 0px,rgba(59,130,246,0.03) 1px,transparent 1px,transparent 28px)', pointerEvents:'none' }} />
+          <div style={{ position:'absolute', inset:0, zIndex:0, backgroundImage:'repeating-linear-gradient(135deg,rgba(59,130,246,0.03) 0px,rgba(59,130,246,0.03) 1px,transparent 1px,transparent 28px)', pointerEvents:'none' }} />
 
           {/* glow blobs */}
-          <div style={{ position:'absolute', top:'-5%', right:'-10%', width:420, height:420, borderRadius:'50%', background:'radial-gradient(circle,rgba(59,130,246,0.1) 0%,transparent 65%)', animation:'glow 5s ease-in-out infinite', pointerEvents:'none' }} />
-          <div style={{ position:'absolute', bottom:'10%', left:'-8%', width:300, height:300, borderRadius:'50%', background:'radial-gradient(circle,rgba(34,197,94,0.07) 0%,transparent 65%)', pointerEvents:'none' }} />
+          <div style={{ position:'absolute', top:'-5%', right:'-10%', width:420, height:420, zIndex:0, borderRadius:'50%', background:'radial-gradient(circle,rgba(59,130,246,0.1) 0%,transparent 65%)', animation:'glow 5s ease-in-out infinite', pointerEvents:'none' }} />
+          <div style={{ position:'absolute', bottom:'10%', left:'-8%', width:300, height:300, zIndex:0, borderRadius:'50%', background:'radial-gradient(circle,rgba(139,92,246,0.07) 0%,transparent 65%)', pointerEvents:'none' }} />
 
           {/* Logo */}
-          <div style={{ position:'relative', zIndex:1 }}>
+          <div style={{ position:'relative', zIndex:3 }}>
             <Link to="/" style={{ display:'inline-flex', alignItems:'center', gap:10, textDecoration:'none' }}>
-              <div style={{ width:38, height:38, borderRadius:11, background:'linear-gradient(135deg,#22C55E,#16A34A)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:18, fontWeight:900, color:'#000', fontFamily:"'Sora',sans-serif" }}>A</div>
+              <div style={{ width:38, height:38, borderRadius:11, background:'linear-gradient(135deg,#8B5CF6,#7C3AED)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:18, fontWeight:900, color:'#000', fontFamily:"'Sora',sans-serif" }}>A</div>
               <span style={{ fontFamily:"'Sora',sans-serif", fontWeight:900, fontSize:18, color:'#fff', letterSpacing:-0.3 }}>Axentralab</span>
             </Link>
           </div>
 
           {/* Center headline + steps */}
-          <div style={{ position:'relative', zIndex:1, flex:1, display:'flex', flexDirection:'column', justifyContent:'center', padding:'36px 0' }}>
+          <div style={{ position:'relative', zIndex:3, flex:1, display:'flex', flexDirection:'column', justifyContent:'center', padding:'36px 0' }}>
             <div style={{ marginBottom:36 }}>
               <h2 style={{ fontFamily:"'Sora',sans-serif", fontSize:'clamp(22px,3vw,32px)', fontWeight:900, color:'#fff', letterSpacing:-1, lineHeight:1.1, margin:'0 0 12px' }}>
                 From idea to launch —<br />
@@ -137,7 +176,7 @@ export default function RegisterPage() {
           </div>
 
           {/* Bottom: client logos ticker */}
-          <div style={{ position:'relative', zIndex:1 }}>
+          <div style={{ position:'relative', zIndex:3 }}>
             <div style={{ fontFamily:"'Space Mono',monospace", fontSize:9, color:'rgba(255,255,255,0.2)', letterSpacing:2, textTransform:'uppercase', marginBottom:12 }}>Trusted by</div>
             <div style={{ overflow:'hidden' }}>
               <div style={{ display:'flex', animation:'ticker 16s linear infinite', width:'max-content', gap:0 }}>
@@ -150,8 +189,31 @@ export default function RegisterPage() {
         </div>
 
         {/* ── RIGHT: REGISTER FORM ── */}
-        <div className="reg-right" style={{ background:'#0A0D16', display:'flex', alignItems:'center', padding:'clamp(40px,5vw,72px) clamp(24px,6vw,72px)', overflowY:'auto' }}>
-          <div style={{ width:'100%', maxWidth:440, margin:'0 auto' }}>
+        <div
+          className="reg-right"
+          style={{
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            padding: 'clamp(40px,5vw,72px) clamp(24px,6vw,72px)',
+            overflowY: 'auto',
+            zIndex: 1,
+          }}
+        >
+          <div
+            style={{
+              position: 'relative',
+              zIndex: 2,
+              width: '100%',
+              maxWidth: 460,
+              margin: '0 auto',
+              padding: 'clamp(22px,3vw,36px)',
+              borderRadius: 22,
+              border: '1px solid rgba(59,130,246,0.16)',
+              background: 'linear-gradient(200deg, rgba(59,130,246,0.07) 0%, rgba(10,13,22,0.55) 55%)',
+              boxShadow: '0 28px 90px rgba(0,0,0,0.38), inset 0 1px 0 rgba(255,255,255,0.05)',
+            }}
+          >
 
             {/* Header */}
             <div style={{ marginBottom:32 }}>
@@ -166,6 +228,13 @@ export default function RegisterPage() {
                 Start building with Axentralab — your first proposal is free.
               </p>
             </div>
+
+            {/* Referral Info */}
+            {referralInfo && (
+              <div style={{ background:'rgba(16,185,129,0.08)', border:'1px solid rgba(16,185,129,0.3)', borderRadius:12, padding:'12px 16px', marginBottom:20, fontSize:13, color:'#10B981', fontFamily:"'DM Sans',sans-serif", display:'flex', alignItems:'center', gap:8, animation:'fadeUp 0.3s ease' }}>
+                <span>🎁</span> {referralInfo.message}
+              </div>
+            )}
 
             {/* Error */}
             {error && (
@@ -200,6 +269,15 @@ export default function RegisterPage() {
                   value={form.company} onChange={e => setForm({ ...form, company:e.target.value })} />
               </div>
 
+              {/* Referral Code */}
+              <div>
+                <label style={{ display:'block', fontSize:11, fontWeight:700, color:'rgba(255,255,255,0.32)', marginBottom:7, fontFamily:"'Space Mono',monospace", letterSpacing:1, textTransform:'uppercase' }}>
+                  Referral Code <span style={{ color:'rgba(255,255,255,0.18)', fontWeight:400, fontSize:10 }}>(optional)</span>
+                </label>
+                <input className="reg-input" type="text" placeholder="Enter referral code"
+                  value={form.referralCode} onChange={e => setForm({ ...form, referralCode:e.target.value })} disabled={!!searchParams.get('ref')} style={{ opacity: !!searchParams.get('ref') ? 0.6 : 1, cursor: !!searchParams.get('ref') ? 'not-allowed' : 'text' }} />
+              </div>
+
               {/* Password */}
               <div>
                 <label style={{ display:'block', fontSize:11, fontWeight:700, color:'rgba(255,255,255,0.32)', marginBottom:7, fontFamily:"'Space Mono',monospace", letterSpacing:1, textTransform:'uppercase' }}>Password</label>
@@ -231,7 +309,7 @@ export default function RegisterPage() {
                 <div style={{ position:'relative' }}>
                   <input className="reg-input" type={showCf ? 'text' : 'password'} placeholder="••••••••" required
                     value={form.confirm} onChange={e => setForm({ ...form, confirm:e.target.value })}
-                    style={{ paddingRight:44, borderColor: form.confirm && form.confirm !== form.password ? 'rgba(239,68,68,0.5)' : form.confirm && form.confirm === form.password ? 'rgba(34,197,94,0.4)' : undefined }} />
+                    style={{ paddingRight:44, borderColor: form.confirm && form.confirm !== form.password ? 'rgba(239,68,68,0.5)' : form.confirm && form.confirm === form.password ? 'rgba(139,92,246,0.4)' : undefined }} />
                   <button type="button" onClick={() => setShowCf(!showCf)}
                     style={{ position:'absolute', right:14, top:'50%', transform:'translateY(-50%)', background:'none', border:'none', color:'rgba(255,255,255,0.3)', cursor:'pointer', fontSize:16, padding:0, lineHeight:1 }}>
                     {showCf ? '🙈' : '👁️'}
