@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import api from '../services/api';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
 import ProcessSection from '../components/sections/ProcessSection';
 import BlogSection from '../components/sections/BlogSection';
@@ -28,6 +29,17 @@ const AI_TABS = [
 const TONES   = ['Professional', 'Casual', 'Bold', 'Friendly', 'Persuasive'];
 const LENGTHS = ['Short', 'Medium', 'Long'];
 const HERO_BG_IMAGE = process.env.REACT_APP_HOME_HERO_BG_IMAGE || '/images/home-hero-bg.png';
+
+// Terminal animation lines for FloatingTerminal widget
+const TERMINAL_LINES = [
+  { text: '$ axentralab init --secure',         color: '#8B5CF6', delay: 200  },
+  { text: '✔ Scanning dependencies…',           color: '#22D3EE', delay: 700  },
+  { text: '✔ OWASP vulnerability scan: clean',  color: '#22C55E', delay: 1200 },
+  { text: '✔ SSL/TLS certificate applied',      color: '#22C55E', delay: 1700 },
+  { text: '✔ WAF rules loaded (247 rules)',      color: '#22C55E', delay: 2100 },
+  { text: '$ deploying to production…',         color: '#F59E0B', delay: 2600 },
+  { text: '🚀 Live → axentralab.com',           color: '#A855F7', delay: 3100 },
+];
 
 // ─── Hooks ────────────────────────────────────────────────────────────────────
 
@@ -114,26 +126,22 @@ function AnimatedHeadline() {
 // Floating terminal widget
 function FloatingTerminal() {
   const [visibleLines, setVisibleLines] = useState([]);
+  // loopKey increments to restart the animation cycle cleanly
+  const [loopKey, setLoopKey] = useState(0);
 
   useEffect(() => {
+    setVisibleLines([]);
     const timers = TERMINAL_LINES.map((line, i) =>
       setTimeout(() => setVisibleLines(prev => [...prev, i]), line.delay)
     );
-    // loop: restart after all lines shown
-    const loopTimer = setTimeout(() => setVisibleLines([]), TERMINAL_LINES[TERMINAL_LINES.length - 1].delay + 2000);
-    return () => { timers.forEach(clearTimeout); clearTimeout(loopTimer); };
-  }, [visibleLines.length === 0 ? 0 : -1]); // re-trigger on reset
-
-  // re-run animation loop
-  useEffect(() => {
-    if (visibleLines.length === 0) {
-      const timers = TERMINAL_LINES.map((line, i) =>
-        setTimeout(() => setVisibleLines(prev => [...prev, i]), line.delay)
-      );
-      const loopTimer = setTimeout(() => setVisibleLines([]), TERMINAL_LINES[TERMINAL_LINES.length - 1].delay + 2200);
-      return () => { timers.forEach(clearTimeout); clearTimeout(loopTimer); };
-    }
-  }, [visibleLines]);
+    const resetTimer = setTimeout(() => {
+      setLoopKey(k => k + 1);
+    }, TERMINAL_LINES[TERMINAL_LINES.length - 1].delay + 2400);
+    return () => {
+      timers.forEach(clearTimeout);
+      clearTimeout(resetTimer);
+    };
+  }, [loopKey]); // only re-runs when loopKey changes — no double-effect, no race
 
   return (
     <div style={{
@@ -230,20 +238,17 @@ function FreeAITool() {
     setOutput('');
     setCopied(false);
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          messages: [{ role: 'user', content: PROMPTS[tab](topic, tone, length) }],
-        }),
+      // FIX: Route through backend — never expose Anthropic API key in the browser.
+      // Your backend /ai/generate endpoint should forward to Anthropic with the key
+      // stored securely in server env vars (ANTHROPIC_API_KEY).
+      const res  = await api.post('/ai/generate', {
+        tab,
+        prompt: PROMPTS[tab](topic, tone, length),
       });
-      const data = await res.json();
-      const text = data.content?.map(b => b.text || '').join('') || 'No output.';
+      const text = res.data?.text || res.data?.content || 'No output.';
       setOutput(text);
       setChars(text.length);
-    } catch {
+    } catch (err) {
       setOutput('⚠️ Something went wrong. Please try again.');
     }
     setLoading(false);
@@ -728,9 +733,6 @@ export default function HomePage() {
                   VIEW SERVICES
                 </Link>
               </div>
-              <div className="stats-grid" style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)' }}>
-          {STATS.map(s => <StatCard key={s.label} stat={s} />)}
-        </div>
             </div>
           </div>
         </div>
@@ -740,7 +742,9 @@ export default function HomePage() {
 
       {/* ── STATS BAR ─────────────────────────────────────────────────────── */}
       <section style={{ borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.01)' }}>
-       
+        <div className="stats-grid" style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)' }}>
+          {STATS.map(s => <StatCard key={s.label} stat={s} />)}
+        </div>
       </section>
 
       {/* ── FREE AI TOOL ──────────────────────────────────────────────────── */}
