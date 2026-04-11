@@ -23,8 +23,24 @@ const VALUES = [
 ];
 
 function Glow({ color, style }) {
+  const isMobile = window.innerWidth < 768;
+  const isSmallMobile = window.innerWidth < 480;
+  
+  let scale = 1;
+  if (isSmallMobile) scale = 0.5;
+  else if (isMobile) scale = 0.7;
+  
   return (
-    <div style={{ position: 'absolute', borderRadius: '50%', pointerEvents: 'none', background: `radial-gradient(circle, ${color}15 0%, transparent 65%)`, filter: 'blur(50px)', ...style }} />
+    <div style={{ 
+      position: 'absolute', 
+      borderRadius: '50%', 
+      pointerEvents: 'none', 
+      background: `radial-gradient(circle, ${color}15 0%, transparent 65%)`, 
+      filter: 'blur(50px)', 
+      ...style,
+      width: (style?.width || 600) * scale,
+      height: (style?.height || 600) * scale,
+    }} />
   );
 }
 
@@ -54,26 +70,219 @@ export default function AboutPage() {
         }
         .team-card:hover { transform: translateY(-5px); }
 
-        @media (max-width:992px) {
-          .about-mission-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
-          .about-mission-card { padding: 28px !important; }
+        .about-card p {
+          font-size: 13px !important;
+          line-height: 1.75 !important;
         }
-        @media (max-width:768px) {
-          .about-hero-grid { min-height: 64vh !important; padding: 130px 5% 90px !important; background-size: 40px 40px !important; }
-          .about-hero-title { letter-spacing: -1px !important; line-height: 1.1 !important; }
-          .about-hero-sub { font-size: 15px !important; line-height: 1.75 !important; }
-          .about-section { padding: 72px 5% !important; }
-          .about-values-grid { grid-template-columns: 1fr 1fr !important; }
-          .about-team-grid   { grid-template-columns: 1fr 1fr !important; }
-          .about-badge { font-size: 9px !important; letter-spacing: 1.2px !important; }
+        
+        .about-cta-section p {
+          font-size: 16px;
+          color: var(--muted-color);
+          margin-bottom: 32px;
         }
-        @media (max-width:480px) {
-          .about-hero-grid { min-height: 58vh !important; padding: 118px 5% 78px !important; }
-          .about-values-grid { grid-template-columns: 1fr !important; }
-          .about-team-grid   { grid-template-columns: 1fr 1fr !important; }
-          .about-mission-card { padding: 22px !important; border-radius: 18px !important; }
-          .about-cta-buttons { flex-direction: column !important; }
-          .about-cta-buttons a { width: 100% !important; justify-content: center !important; }
+        
+        .about-mission-text p {
+          font-size: 15px;
+          line-height: 1.9;
+          color: var(--muted-color);
+        }
+
+        /* ── TABLET (1024px - 768px) ─────────────────────────────────── */
+        @media (max-width: 1024px) {
+          .about-mission-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .about-mission-card { padding: 32px !important; }
+          .about-values-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
+          .about-team-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
+          .about-section { padding: 80px 6% !important; }
+          .about-hero-grid { padding: 160px 6% 110px !important; }
+        }
+
+        /* ── MOBILE (768px - 480px) ──────────────────────────────────── */
+        @media (max-width: 768px) {
+          .about-hero-grid { 
+            min-height: 66vh !important; 
+            padding: 130px 4% 95px !important; 
+            background-size: 40px 40px !important; 
+          }
+          .about-hero-title { 
+            font-size: clamp(28px, 5vw, 48px) !important; 
+            letter-spacing: -0.8px !important; 
+            line-height: 1.15 !important; 
+            margin-bottom: 16px !important;
+          }
+          .about-hero-sub { 
+            font-size: 14px !important; 
+            line-height: 1.8 !important; 
+            margin-top: 16px !important;
+          }
+          .about-mission-text p {
+            font-size: 14px !important;
+            line-height: 1.75 !important;
+          }
+          .about-section { 
+            padding: 60px 4% !important; 
+          }
+          .about-values-grid { 
+            grid-template-columns: repeat(2, 1fr) !important; 
+            gap: 16px !important; 
+          }
+          .about-team-grid { 
+            grid-template-columns: repeat(2, 1fr) !important; 
+            gap: 16px !important; 
+          }
+          .about-card { 
+            padding: 20px 16px !important; 
+            border-radius: 16px !important;
+          }
+          .team-card { 
+            padding: 20px !important; 
+            border-radius: 16px !important;
+          }
+          .about-badge { 
+            font-size: 8px !important; 
+            letter-spacing: 1px !important; 
+            padding: 3px 10px !important;
+          }
+          .about-mission-card { 
+            padding: 20px !important; 
+            border-radius: 16px !important;
+          }
+          .about-mission-card div { 
+            padding: 12px 0 !important; 
+            font-size: 13px !important;
+          }
+          .about-cta-section p {
+            font-size: 15px !important;
+            line-height: 1.6 !important;
+          }
+          .about-cta-buttons { 
+            flex-direction: column !important; 
+            gap: 12px !important;
+          }
+          .about-cta-buttons a { 
+            width: 100% !important; 
+            justify-content: center !important;
+            padding: 12px 20px !important;
+            font-size: 14px !important;
+          }
+        }
+
+        /* ── SMALL MOBILE (480px and below) ──────────────────────────── */
+        @media (max-width: 480px) {
+          .about-hero-grid { 
+            min-height: 60vh !important; 
+            padding: 115px 3.5% 80px !important;
+            background-size: 30px 30px !important;
+          }
+          .about-hero-title { 
+            font-size: clamp(24px, 5.5vw, 40px) !important; 
+            letter-spacing: -0.6px !important; 
+            line-height: 1.1 !important; 
+            margin-bottom: 12px !important;
+          }
+          .about-hero-sub { 
+            font-size: 13px !important; 
+            line-height: 1.75 !important; 
+          }
+          .about-mission-text p {
+            font-size: 13px !important;
+            line-height: 1.7 !important;
+          }
+          .about-section { 
+            padding: 50px 3.5% !important; 
+          }
+          .about-values-grid { 
+            grid-template-columns: 1fr !important; 
+            gap: 12px !important; 
+          }
+          .about-team-grid { 
+            grid-template-columns: 1fr !important; 
+            gap: 12px !important; 
+          }
+          .about-card { 
+            padding: 18px 14px !important; 
+            border-radius: 14px !important;
+          }
+          .about-card h3 {
+            font-size: 16px !important;
+            margin-bottom: 8px !important;
+          }
+          .about-card p {
+            font-size: 12px !important;
+            line-height: 1.6 !important;
+          }
+          .team-card { 
+            padding: 18px !important; 
+            border-radius: 14px !important;
+          }
+          .team-card h3 {
+            font-size: 14px !important;
+            margin-bottom: 4px !important;
+          }
+          .team-card p {
+            font-size: 11px !important;
+          }
+          .about-badge { 
+            font-size: 7.5px !important; 
+            letter-spacing: 0.8px !important; 
+            padding: 2px 8px !important;
+            margin-bottom: 12px !important;
+          }
+          .about-mission-card { 
+            padding: 16px !important; 
+            border-radius: 14px !important;
+          }
+          .about-mission-card div { 
+            padding: 10px 0 !important; 
+            font-size: 12px !important;
+          }
+          .about-mission-card span { 
+            font-size: 16px !important;
+          }
+          .about-cta-section p {
+            font-size: 14px !important;
+          }
+          .about-cta-buttons { 
+            flex-direction: column !important; 
+            gap: 10px !important;
+          }
+          .about-cta-buttons a { 
+            width: 100% !important; 
+            justify-content: center !important;
+            padding: 11px 18px !important;
+            font-size: 13px !important;
+          }
+        }
+
+        /* ── EXTRA SMALL (320px - 375px) ──────────────────────────────── */
+        @media (max-width: 375px) {
+          .about-hero-grid { 
+            min-height: 55vh !important; 
+            padding: 100px 3% 70px !important;
+          }
+          .about-hero-title { 
+            font-size: clamp(20px, 5.5vw, 36px) !important; 
+            line-height: 1.08 !important; 
+            margin-bottom: 10px !important;
+          }
+          .about-hero-sub { 
+            font-size: 12px !important;
+          }
+          .about-mission-text p {
+            font-size: 12px !important;
+          }
+          .about-section { 
+            padding: 45px 3% !important; 
+          }
+          .about-card, .team-card, .about-mission-card { 
+            padding: 16px 12px !important; 
+          }
+          .about-badge { 
+            margin-bottom: 10px !important;
+          }
+          .about-cta-section p {
+            font-size: 13px !important;
+          }
         }
       `}</style>
 
@@ -106,17 +315,19 @@ export default function AboutPage() {
         <section className="about-section" style={{ padding: '90px 5%', position: 'relative' }}>
           <Glow color={C.green} style={{ width: 500, height: 500, top: '10%', right: '-10%' }} />
           <div className="about-mission-grid" style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center' }}>
-            <div>
+          <div>
               <span className="about-badge" style={{ background: `${C.green}10`, border: `1px solid ${C.green}28`, color: C.green, marginBottom: 18 }}>Mission & Vision</span>
-              <h2 style={{ fontFamily: "'Outfit',sans-serif", fontSize: 'clamp(26px,3.5vw,44px)', fontWeight: 800, letterSpacing: -1.2, color: C.text, marginBottom: 20, lineHeight: 1.15 }}>
+            <h2 style={{ fontFamily: "'Outfit',sans-serif", fontSize: 'clamp(22px, 4vw, 44px)', fontWeight: 800, letterSpacing: -1.2, color: C.text, marginBottom: 20, lineHeight: 1.15 }}>
                 Technology that<br />serves humanity.
               </h2>
-              <p style={{ color: C.muted, fontSize: 15, lineHeight: 1.9, marginBottom: 18 }}>
-                We believe great software should be accessible to businesses of all sizes. From early-stage startups to established enterprises, we bring the same rigor, craft, and care to every project.
-              </p>
-              <p style={{ color: C.muted, fontSize: 15, lineHeight: 1.9 }}>
-                Our vision is a world where every organization can protect itself, automate intelligently, and scale confidently — regardless of geography or budget.
-              </p>
+              <div className="about-mission-text">
+                <p style={{ color: C.muted, fontSize: 15, lineHeight: 1.9, marginBottom: 18 }}>
+                  We believe great software should be accessible to businesses of all sizes. From early-stage startups to established enterprises, we bring the same rigor, craft, and care to every project.
+                </p>
+                <p style={{ color: C.muted, fontSize: 15, lineHeight: 1.9 }}>
+                  Our vision is a world where every organization can protect itself, automate intelligently, and scale confidently — regardless of geography or budget.
+                </p>
+              </div>
             </div>
             {/* Stats panel */}
             <div className="about-mission-card" style={{ background: C.bgCard, border: `1px solid ${C.border}`, borderRadius: 24, padding: 36, position: 'relative', overflow: 'hidden' }}>
@@ -142,7 +353,7 @@ export default function AboutPage() {
           <div style={{ maxWidth: 1100, margin: '0 auto', position: 'relative' }}>
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
               <span className="about-badge" style={{ background: `${C.blue}10`, border: `1px solid ${C.blue}28`, color: C.blue, marginBottom: 16 }}>Core Values</span>
-              <h2 style={{ fontFamily: "'Outfit',sans-serif", fontSize: 'clamp(26px,3.5vw,44px)', fontWeight: 800, letterSpacing: -1.2, color: C.text }}>
+              <h2 style={{ fontFamily: "'Outfit',sans-serif", fontSize: 'clamp(22px, 4vw, 44px)', fontWeight: 800, letterSpacing: -1.2, color: C.text }}>
                 What drives us every day.
               </h2>
             </div>
@@ -170,7 +381,7 @@ export default function AboutPage() {
           <div style={{ maxWidth: 1100, margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
               <span className="about-badge" style={{ background: `${C.amber}10`, border: `1px solid ${C.amber}28`, color: C.amber, marginBottom: 16 }}>The Team</span>
-              <h2 style={{ fontFamily: "'Outfit',sans-serif", fontSize: 'clamp(26px,3.5vw,44px)', fontWeight: 800, letterSpacing: -1.2, color: C.text }}>
+              <h2 style={{ fontFamily: "'Outfit',sans-serif", fontSize: 'clamp(22px, 4vw, 44px)', fontWeight: 800, letterSpacing: -1.2, color: C.text }}>
                 The people behind the code.
               </h2>
             </div>
@@ -194,16 +405,16 @@ export default function AboutPage() {
         </section>
 
         {/* ── CTA ─────────────────────────────────────────────── */}
-        <section className="about-section" style={{ padding: '90px 5%', textAlign: 'center', borderTop: `1px solid ${C.border}` }}>
-          <h2 style={{ fontFamily: "'Outfit',sans-serif", fontSize: 'clamp(26px,3.5vw,44px)', fontWeight: 800, letterSpacing: -1, color: C.text, marginBottom: 16 }}>
+        <section className="about-section about-cta-section" style={{ padding: '90px 5%', textAlign: 'center', borderTop: `1px solid ${C.border}` }}>
+          <h2 style={{ fontFamily: "'Outfit',sans-serif", fontSize: 'clamp(22px, 4vw, 44px)', fontWeight: 800, letterSpacing: -1, color: C.text, marginBottom: 16 }}>
             Want to work with us?
           </h2>
           <p style={{ color: C.muted, fontSize: 16, marginBottom: 32 }}>We'd love to hear about your project.</p>
           <div className="about-cta-buttons" style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 32px', borderRadius: 12, background: C.blue, color: '#fff', fontFamily: "'Outfit',sans-serif", fontWeight: 700, fontSize: 15, textDecoration: 'none', boxShadow: `0 0 24px ${C.blue}40`, transition: 'all 0.2s' }}>
+            <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px 32px', borderRadius: 12, background: C.blue, color: '#fff', fontFamily: "'Outfit',sans-serif", fontWeight: 700, fontSize: 15, textDecoration: 'none', boxShadow: `0 0 24px ${C.blue}40`, transition: 'all 0.2s', minHeight: 48 }}>
               Get in touch →
             </Link>
-            <Link to="/portfolio" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 28px', borderRadius: 12, background: 'transparent', color: C.text, border: `1px solid ${C.border}`, fontFamily: "'Outfit',sans-serif", fontWeight: 600, fontSize: 15, textDecoration: 'none', transition: 'all 0.2s' }}>
+            <Link to="/portfolio" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px 28px', borderRadius: 12, background: 'transparent', color: C.text, border: `1px solid ${C.border}`, fontFamily: "'Outfit',sans-serif", fontWeight: 600, fontSize: 15, textDecoration: 'none', transition: 'all 0.2s', minHeight: 48 }}>
               View our work
             </Link>
           </div>
