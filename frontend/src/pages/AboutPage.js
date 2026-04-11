@@ -70,6 +70,10 @@ export default function AboutPage() {
         }
         .team-card:hover { transform: translateY(-5px); }
 
+        .about-section-wrapper {
+          margin-bottom: 12px;
+        }
+
         .about-card p {
           font-size: 13px !important;
           line-height: 1.75 !important;
@@ -101,53 +105,58 @@ export default function AboutPage() {
         @media (max-width: 768px) {
           .about-hero-grid { 
             min-height: 66vh !important; 
-            padding: 130px 4% 95px !important; 
+            padding: 140px 5% 100px !important; 
             background-size: 40px 40px !important; 
           }
           .about-hero-title { 
             font-size: clamp(28px, 5vw, 48px) !important; 
             letter-spacing: -0.8px !important; 
             line-height: 1.15 !important; 
-            margin-bottom: 16px !important;
+            margin-bottom: 18px !important;
           }
           .about-hero-sub { 
             font-size: 14px !important; 
-            line-height: 1.8 !important; 
-            margin-top: 16px !important;
+            line-height: 1.85 !important; 
+            margin-top: 18px !important;
+          }
+          .about-mission-grid {
+            gap: 45px !important;
           }
           .about-mission-text p {
             font-size: 14px !important;
-            line-height: 1.75 !important;
+            line-height: 1.8 !important;
+            margin-bottom: 16px !important;
           }
           .about-section { 
-            padding: 60px 4% !important; 
+            padding: 70px 5% !important; 
           }
           .about-values-grid { 
             grid-template-columns: repeat(2, 1fr) !important; 
-            gap: 16px !important; 
+            gap: 18px !important; 
           }
           .about-team-grid { 
             grid-template-columns: repeat(2, 1fr) !important; 
-            gap: 16px !important; 
+            gap: 18px !important; 
           }
           .about-card { 
-            padding: 20px 16px !important; 
+            padding: 22px 18px !important; 
             border-radius: 16px !important;
           }
           .team-card { 
-            padding: 20px !important; 
+            padding: 22px !important; 
             border-radius: 16px !important;
           }
           .about-badge { 
             font-size: 8px !important; 
             letter-spacing: 1px !important; 
             padding: 3px 10px !important;
+            margin-bottom: 14px !important;
           }
           .about-mission-card { 
-            padding: 20px !important; 
+            padding: 24px !important; 
             border-radius: 16px !important;
           }
-          .about-mission-card div { 
+          .about-mission-card div {  
             padding: 12px 0 !important; 
             font-size: 13px !important;
           }
@@ -171,36 +180,40 @@ export default function AboutPage() {
         @media (max-width: 480px) {
           .about-hero-grid { 
             min-height: 60vh !important; 
-            padding: 115px 3.5% 80px !important;
+            padding: 120px 4.5% 85px !important;
             background-size: 30px 30px !important;
           }
           .about-hero-title { 
             font-size: clamp(24px, 5.5vw, 40px) !important; 
             letter-spacing: -0.6px !important; 
-            line-height: 1.1 !important; 
-            margin-bottom: 12px !important;
+            line-height: 1.12 !important; 
+            margin-bottom: 14px !important;
           }
           .about-hero-sub { 
-            font-size: 13px !important; 
-            line-height: 1.75 !important; 
+            font-size: 13.5px !important; 
+            line-height: 1.8 !important; 
+          }
+          .about-mission-grid {
+            gap: 38px !important;
           }
           .about-mission-text p {
             font-size: 13px !important;
-            line-height: 1.7 !important;
+            line-height: 1.75 !important;
+            margin-bottom: 14px !important;
           }
           .about-section { 
-            padding: 50px 3.5% !important; 
+            padding: 55px 4.5% !important; 
           }
           .about-values-grid { 
             grid-template-columns: 1fr !important; 
-            gap: 12px !important; 
+            gap: 14px !important; 
           }
           .about-team-grid { 
             grid-template-columns: 1fr !important; 
-            gap: 12px !important; 
+            gap: 14px !important; 
           }
           .about-card { 
-            padding: 18px 14px !important; 
+            padding: 20px 16px !important; 
             border-radius: 14px !important;
           }
           .about-card h3 {
@@ -208,16 +221,16 @@ export default function AboutPage() {
             margin-bottom: 8px !important;
           }
           .about-card p {
-            font-size: 12px !important;
-            line-height: 1.6 !important;
+            font-size: 12.5px !important;
+            line-height: 1.65 !important;
           }
           .team-card { 
-            padding: 18px !important; 
+            padding: 20px 16px !important; 
             border-radius: 14px !important;
           }
           .team-card h3 {
             font-size: 14px !important;
-            margin-bottom: 4px !important;
+            margin-bottom: 6px !important;
           }
           .team-card p {
             font-size: 11px !important;
@@ -229,11 +242,11 @@ export default function AboutPage() {
             margin-bottom: 12px !important;
           }
           .about-mission-card { 
-            padding: 16px !important; 
+            padding: 18px !important; 
             border-radius: 14px !important;
           }
           .about-mission-card div { 
-            padding: 10px 0 !important; 
+            padding: 12px 0 !important; 
             font-size: 12px !important;
           }
           .about-mission-card span { 
@@ -241,15 +254,16 @@ export default function AboutPage() {
           }
           .about-cta-section p {
             font-size: 14px !important;
+            line-height: 1.7 !important;
           }
           .about-cta-buttons { 
             flex-direction: column !important; 
-            gap: 10px !important;
+            gap: 11px !important;
           }
           .about-cta-buttons a { 
             width: 100% !important; 
             justify-content: center !important;
-            padding: 11px 18px !important;
+            padding: 12px 18px !important;
             font-size: 13px !important;
           }
         }
@@ -258,24 +272,29 @@ export default function AboutPage() {
         @media (max-width: 375px) {
           .about-hero-grid { 
             min-height: 55vh !important; 
-            padding: 100px 3% 70px !important;
+            padding: 115px 4% 75px !important;
           }
           .about-hero-title { 
             font-size: clamp(20px, 5.5vw, 36px) !important; 
-            line-height: 1.08 !important; 
-            margin-bottom: 10px !important;
+            line-height: 1.1 !important; 
+            margin-bottom: 12px !important;
           }
           .about-hero-sub { 
-            font-size: 12px !important;
+            font-size: 13px !important;
+            line-height: 1.75 !important;
+          }
+          .about-mission-grid {
+            gap: 32px !important;
           }
           .about-mission-text p {
             font-size: 12px !important;
+            line-height: 1.7 !important;
           }
           .about-section { 
-            padding: 45px 3% !important; 
+            padding: 50px 4% !important; 
           }
           .about-card, .team-card, .about-mission-card { 
-            padding: 16px 12px !important; 
+            padding: 18px 14px !important; 
           }
           .about-badge { 
             margin-bottom: 10px !important;
