@@ -222,7 +222,26 @@ const PROJECTS = [
     liveUrl: "https://cosmosholiday.com/",
     featured: true,
     isDemo: true,
-  }
+  },
+  {
+    id: "d13",
+    title: "booking Site For Tech Services",
+    tag: "Tech Services",
+    category: "Live",
+    color: "#7594b1",
+    year: "2025",
+    thumbnail: "https://res.cloudinary.com/dwrlbuej9/image/upload/v1775967412/Screenshot_2026-04-12_101246_cahmx5.png",
+    desc: "A booking website demo for tech services — client portal, booking management system, sales analytics dashboard and inventory management system in one platform.", 
+    stack: ["React", "Chart.js", "Node.js", "MongoDB", "JWT"],
+    results: [
+      "Client portal with booking updates",
+      "Booking management system",
+      "Sales analytics with charts",
+    ],
+    liveUrl: "https://techbookingservices.com/",
+    featured: true,
+    isDemo: true,
+  },
 ];
 
 // ── Constants ──────────────────────────────────────────────────────────────────
