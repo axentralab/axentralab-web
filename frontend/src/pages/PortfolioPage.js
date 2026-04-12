@@ -238,7 +238,7 @@ const PROJECTS = [
       "Booking management system",
       "Sales analytics with charts",
     ],
-    liveUrl: "https://techbookingservices.com/",
+    liveUrl: "https://client-demo-1.vercel.app/#how-it-works/",
     featured: true,
     isDemo: true,
   },
