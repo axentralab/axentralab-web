@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import api from '../services/api';
 import Skeleton from '../components/Skeleton';
 import { TAG_COLORS } from '../constants/statusColors';
@@ -11,6 +12,7 @@ const PER_PAGE = 9;
 const HERO_BG_IMAGE = process.env.REACT_APP_HERO_BG_IMAGE || '/images/hero-bg.png';
 
 export default function BlogPage() {
+  const { t } = useTranslation();
   const [posts, setPosts]     = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError]     = useState(false);

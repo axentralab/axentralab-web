@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
@@ -11,6 +12,7 @@ const ACCENT   = '#8B5CF6';
 const PRIMARY2 = '#A78BFA';
 
 export default function CheckoutPage() {
+  const { t } = useTranslation();
   const { cart, total, clearCart } = useCart();
   const { user }   = useAuth();
   const navigate   = useNavigate();

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import ReferralPromoAd from '../components/ui/ReferralPromoAd';
 
 // ─── Design tokens (mirrors site palette) ────────────────────────────────────
@@ -667,6 +668,7 @@ function CaseCard({ c, idx }) {
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
 export default function ServicesPage() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('pricing');
   const [portfolioCat, setPortfolioCat] = useState('All');
   const [packCat, setPackCat] = useState('all');

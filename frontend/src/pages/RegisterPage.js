@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 
 const REGISTER_BG_IMAGE =
@@ -16,6 +17,7 @@ const STEPS = [
 const LOGOS = ['FinNova','BankCo','LearnLoop','Carrgo','Medify','Vaultify'];
 
 export default function RegisterPage() {
+  const { t } = useTranslation();
   const { register, loading } = useAuth();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -249,12 +251,12 @@ export default function RegisterPage() {
               {/* Name + Email */}
               <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
                 <div>
-                  <label style={{ display:'block', fontSize:11, fontWeight:700, color:'rgba(255,255,255,0.32)', marginBottom:7, fontFamily:"'Space Mono',monospace", letterSpacing:1, textTransform:'uppercase' }}>Full Name</label>
+                  <label style={{ display:'block', fontSize:11, fontWeight:700, color:'rgba(255,255,255,0.32)', marginBottom:7, fontFamily:"'Space Mono',monospace", letterSpacing:1, textTransform:'uppercase' }}>{t('auth.name')}</label>
                   <input className="reg-input" type="text" placeholder="John Smith" required
                     value={form.name} onChange={e => setForm({ ...form, name:e.target.value })} />
                 </div>
                 <div>
-                  <label style={{ display:'block', fontSize:11, fontWeight:700, color:'rgba(255,255,255,0.32)', marginBottom:7, fontFamily:"'Space Mono',monospace", letterSpacing:1, textTransform:'uppercase' }}>Email</label>
+                  <label style={{ display:'block', fontSize:11, fontWeight:700, color:'rgba(255,255,255,0.32)', marginBottom:7, fontFamily:"'Space Mono',monospace", letterSpacing:1, textTransform:'uppercase' }}>{t('auth.email')}</label>
                   <input className="reg-input" type="email" placeholder="you@co.com" required
                     value={form.email} onChange={e => setForm({ ...form, email:e.target.value })} />
                 </div>
@@ -263,7 +265,7 @@ export default function RegisterPage() {
               {/* Company */}
               <div>
                 <label style={{ display:'block', fontSize:11, fontWeight:700, color:'rgba(255,255,255,0.32)', marginBottom:7, fontFamily:"'Space Mono',monospace", letterSpacing:1, textTransform:'uppercase' }}>
-                  Company <span style={{ color:'rgba(255,255,255,0.18)', fontWeight:400, fontSize:10 }}>(optional)</span>
+                  {t('common.description')} <span style={{ color:'rgba(255,255,255,0.18)', fontWeight:400, fontSize:10 }}>({t('contact.optional')})</span>
                 </label>
                 <input className="reg-input" type="text" placeholder="Acme Corp"
                   value={form.company} onChange={e => setForm({ ...form, company:e.target.value })} />
@@ -280,9 +282,10 @@ export default function RegisterPage() {
 
               {/* Password */}
               <div>
-                <label style={{ display:'block', fontSize:11, fontWeight:700, color:'rgba(255,255,255,0.32)', marginBottom:7, fontFamily:"'Space Mono',monospace", letterSpacing:1, textTransform:'uppercase' }}>Password</label>
+                <label style={{ display:'block', fontSize:11, fontWeight:700, color:'rgba(255,255,255,0.32)', marginBottom:7, fontFamily:"'Space Mono',monospace", letterSpacing:1, textTransform:'uppercase' }}>
+                  {t('auth.password')}</label>
                 <div style={{ position:'relative' }}>
-                  <input className="reg-input" type={showPw ? 'text' : 'password'} placeholder="Min. 6 characters" required
+                  <input className="reg-input" type={showPw ? 'text' : 'password'} placeholder={t('auth.password_min')} required
                     value={form.password} onChange={e => setForm({ ...form, password:e.target.value })}
                     style={{ paddingRight:44 }} />
                   <button type="button" onClick={() => setShowPw(!showPw)}
@@ -305,7 +308,7 @@ export default function RegisterPage() {
 
               {/* Confirm Password */}
               <div>
-                <label style={{ display:'block', fontSize:11, fontWeight:700, color:'rgba(255,255,255,0.32)', marginBottom:7, fontFamily:"'Space Mono',monospace", letterSpacing:1, textTransform:'uppercase' }}>Confirm Password</label>
+                <label style={{ display:'block', fontSize:11, fontWeight:700, color:'rgba(255,255,255,0.32)', marginBottom:7, fontFamily:"'Space Mono',monospace", letterSpacing:1, textTransform:'uppercase' }}>{t('auth.confirm_password')}</label>
                 <div style={{ position:'relative' }}>
                   <input className="reg-input" type={showCf ? 'text' : 'password'} placeholder="••••••••" required
                     value={form.confirm} onChange={e => setForm({ ...form, confirm:e.target.value })}
@@ -335,8 +338,8 @@ export default function RegisterPage() {
 
               <button type="submit" className="reg-submit" disabled={loading}>
                 {loading
-                  ? <><span style={{ width:16, height:16, border:'2px solid rgba(255,255,255,0.3)', borderTopColor:'#fff', borderRadius:'50%', display:'inline-block', animation:'spin 0.7s linear infinite' }} /> Creating account…</>
-                  : <><span>Create Account</span><span style={{ fontSize:18 }}>→</span></>
+                  ? <><span style={{ width:16, height:16, border:'2px solid rgba(255,255,255,0.3)', borderTopColor:'#fff', borderRadius:'50%', display:'inline-block', animation:'spin 0.7s linear infinite' }} /> {t('auth.registering')}</>
+                  : <><span>{t('auth.sign_up')}</span><span style={{ fontSize:18 }}>→</span></>
                 }
               </button>
             </form>
@@ -355,8 +358,8 @@ export default function RegisterPage() {
             </button>
 
             <p style={{ textAlign:'center', marginTop:20, fontSize:14, color:'rgba(255,255,255,0.35)', fontFamily:"'DM Sans',sans-serif" }}>
-              Already have an account?{' '}
-              <Link to="/login" style={{ color:'#3B82F6', fontWeight:700, textDecoration:'none' }}>Sign in →</Link>
+              {t('auth.already_account')}{' '}
+              <Link to="/login" style={{ color:'#3B82F6', fontWeight:700, textDecoration:'none' }}>{t('auth.sign_in')} →</Link>
             </p>
 
           </div>

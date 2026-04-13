@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 
@@ -15,6 +16,7 @@ const FEATURES = [
 ];
 
 export default function LoginPage() {
+  const { t } = useTranslation();
   const { login, loading } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -218,7 +220,7 @@ export default function LoginPage() {
                 Welcome<br />back<span style={{ color: '#8B5CF6' }}>.</span>
               </h1>
               <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: 14, fontFamily: "'DM Sans',sans-serif", lineHeight: 1.7, margin: 0 }}>
-                Sign in to track your projects, invoices, and deliverables.
+                {t('auth.login')} to track your projects, invoices, and deliverables.
               </p>
             </div>
 
@@ -230,15 +232,15 @@ export default function LoginPage() {
             )}
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-              <div>
-                <label style={{ display: 'block', fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.35)', marginBottom: 7, fontFamily: "'Space Mono',monospace", letterSpacing: 1, textTransform: 'uppercase' }}>Email Address</label>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 7 }}>
+                <label style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.35)', marginBottom: 7, fontFamily: "'Space Mono',monospace", letterSpacing: 1, textTransform: 'uppercase' }}>{t('auth.email')}</label>
                 <input className="login-input" type="email" placeholder="you@company.com" required disabled={isLocked}
                   value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
               </div>
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 7 }}>
-                  <label style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.35)', fontFamily: "'Space Mono',monospace", letterSpacing: 1, textTransform: 'uppercase' }}>Password</label>
-                  <span style={{ fontSize: 12, color: 'rgba(139,92,246,0.7)', cursor: 'pointer', fontFamily: "'DM Sans',sans-serif" }}>Forgot password?</span>
+                  <label style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.35)', fontFamily: "'Space Mono',monospace", letterSpacing: 1, textTransform: 'uppercase' }}>{t('auth.password')}</label>
+                  <span style={{ fontSize: 12, color: 'rgba(139,92,246,0.7)', cursor: 'pointer', fontFamily: "'DM Sans',sans-serif" }}>{t('auth.forgot_password')}</span>
                 </div>
                 <div style={{ position: 'relative' }}>
                   <input className="login-input" type={show ? 'text' : 'password'} placeholder="••••••••" required disabled={isLocked}
@@ -250,19 +252,18 @@ export default function LoginPage() {
                 </div>
               </div>
 
-              {/* FIX: Working remember me */}
               <label style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer' }} onClick={() => setRememberMe(v => !v)}>
                 <div className={`cb-box${rememberMe ? ' checked' : ''}`}>
                   {rememberMe && <span style={{ color: '#000', fontSize: 12, fontWeight: 900, lineHeight: 1 }}>✓</span>}
                 </div>
-                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', fontFamily: "'DM Sans',sans-serif" }}>Remember me for 30 days</span>
+                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', fontFamily: "'DM Sans',sans-serif" }}>{t('auth.remember_me')}</span>
               </label>
 
               <button type="submit" className="login-submit" disabled={loading || isLocked}>
                 {loading
-                  ? <><span style={{ width: 16, height: 16, border: '2px solid rgba(0,0,0,0.3)', borderTopColor: '#000', borderRadius: '50%', display: 'inline-block', animation: 'spin 0.7s linear infinite' }} /> Signing in…</>
-                  : isLocked ? '⏳ Too many attempts…'
-                  : <><span>Sign In</span><span style={{ fontSize: 18 }}>→</span></>
+                  ? <><span style={{ width: 16, height: 16, border: '2px solid rgba(0,0,0,0.3)', borderTopColor: '#000', borderRadius: '50%', display: 'inline-block', animation: 'spin 0.7s linear infinite' }} /> {t('auth.logging_in')}</>
+                  : isLocked ? '⏳ ' + t('auth.logging_in')
+                  : <><span>{t('auth.sign_in')}</span><span style={{ fontSize: 18 }}>→</span></>
                 }
               </button>
             </form>
@@ -280,8 +281,8 @@ export default function LoginPage() {
             </button>
 
             <p style={{ textAlign: 'center', marginTop: 24, fontSize: 14, color: 'rgba(255,255,255,0.35)', fontFamily: "'DM Sans',sans-serif" }}>
-              Don't have an account?{' '}
-              <Link to="/register" style={{ color: '#8B5CF6', fontWeight: 700, textDecoration: 'none' }}>Create one →</Link>
+              {t('auth.no_account')}{' '}
+              <Link to="/register" style={{ color: '#8B5CF6', fontWeight: 700, textDecoration: 'none' }}>{t('auth.sign_up')} →</Link>
             </p>
           </div>
         </div>

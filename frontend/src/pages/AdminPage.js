@@ -1,5 +1,6 @@
 import { useState, useEffect, memo } from 'react';
 import { useNavigate, useLocation, useMatch } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import api, { apiErrorMessage } from '../services/api';
@@ -302,6 +303,7 @@ const UsersTab = memo(function UsersTab() {
 
 // ── Main AdminPage ─────────────────────────────────────────────────────────────
 export default function AdminPage() {
+  const { t } = useTranslation();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [stats, setStats]   = useState({ totalUsers: 0, totalOrders: 0, totalRevenue: 0 });

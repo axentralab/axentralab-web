@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import api from '../services/api';
 
 const HERO_BG_IMAGE = process.env.REACT_APP_CONTACT_HERO_BG_IMAGE || '/images/contact-hero-bg.png';
@@ -14,6 +15,7 @@ const TRUST_POINTS = [
 ];
 
 export default function ContactPage() {
+  const { t } = useTranslation();
   const [form, setForm] = useState({ name:'', email:'', company:'', service:'', budget:'', message:'' });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading]     = useState(false);

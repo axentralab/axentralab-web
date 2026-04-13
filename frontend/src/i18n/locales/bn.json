@@ -1,0 +1,640 @@
+{
+  "nav": {
+    "services": "সেবা",
+    "products": "পণ্য",
+    "portfolio": "পোর্টফোলিও",
+    "team": "দল",
+    "blog": "ব্লগ",
+    "contact": "যোগাযোগ",
+    "quote": "উদ্ধৃতি",
+    "shop": "দোকান",
+    "cart": "কার্ট",
+    "dashboard": "ড্যাশবোর্ড",
+    "admin": "প্রশাসক",
+    "login": "লগইন",
+    "register": "নিবন্ধন",
+    "logout": "লগআউট",
+    "profile": "প্রোফাইল",
+    "language": "ভাষা"
+  },
+  "home": {
+    "title": "এআই অটোমেশন সমাধান",
+    "subtitle": "আপনার ব্যবসাকে বুদ্ধিমান অটোমেশনের সাথে রূপান্তরিত করুন",
+    "description": "অত্যাধুনিক এআই প্রযুক্তি দিয়ে আপনার ব্যবসায়িক প্রক্রিয়াগুলি স্বয়ংক্রিয় করুন",
+    "cta": "শুরু করুন",
+    "learn_more": "আরও জানুন",
+    "features": "বৈশিষ্ট্য",
+    "our_services": "আমাদের সেবা",
+    "why_choose_us": "কেন আমাদের বেছে নিন"
+  },
+  "services": {
+    "title": "আমাদের সেবা",
+    "description": "আপনার ব্যবসার জন্য ব্যাপক এআই এবং অটোমেশন সমাধান",
+    "all_services": "সমস্ত সেবা",
+    "service": "সেবা",
+    "price": "মূল্য",
+    "add_to_cart": "কার্টে যোগ করুন",
+    "view_details": "বিবরণ দেখুন",
+    "no_services": "কোন সেবা পাওয়া যায়নি"
+  },
+  "products": {
+    "title": "আমাদের পণ্য",
+    "description": "আমাদের এআই-চালিত পণ্যের পরিসীমা অন্বেষণ করুন",
+    "all_products": "সমস্ত পণ্য",
+    "product": "পণ্য",
+    "price": "মূল্য",
+    "add_to_cart": "কার্টে যোগ করুন",
+    "view_details": "বিবরণ দেখুন",
+    "no_products": "কোন পণ্য পাওয়া যায়নি"
+  },
+  "portfolio": {
+    "title": "আমাদের পোর্টফোলিও",
+    "description": "দেখুন আমরা আমাদের ক্লায়েন্টদের জন্য কী অর্জন করেছি",
+    "projects": "প্রকল্প",
+    "client": "ক্লায়েন্ট",
+    "technology": "প্রযুক্তি",
+    "results": "ফলাফল",
+    "case_study": "কেস স্টাডি",
+    "no_projects": "কোন প্রকল্প পাওয়া যায়নি"
+  },
+  "team": {
+    "title": "আমাদের দল",
+    "description": "আমাদের সমাধানের পিছনের বিশেষজ্ঞদের সাথে দেখা করুন",
+    "team_members": "দল সদস্য",
+    "role": "ভূমিকা",
+    "expertise": "দক্ষতা",
+    "no_team_members": "কোন দল সদস্য পাওয়া যায়নি"
+  },
+  "blog": {
+    "title": "ব্লগ",
+    "description": "সর্বশেষ অন্তর্দৃষ্টি এবং আপডেট",
+    "articles": "নিবন্ধ",
+    "read_more": "আরও পড়ুন",
+    "published": "প্রকাশিত",
+    "author": "লেখক",
+    "category": "বিভাগ",
+    "no_articles": "কোন নিবন্ধ পাওয়া যায়নি",
+    "reading_time": "পড়ার সময়",
+    "share": "শেয়ার"
+  },
+  "contact": {
+    "title": "আমাদের সাথে যোগাযোগ করুন",
+    "description": "আমাদের দলের সাথে যোগাযোগ করুন",
+    "name": "নাম",
+    "email": "ইমেল",
+    "phone": "ফোন",
+    "subject": "বিষয়",
+    "message": "বার্তা",
+    "send": "পাঠান",
+    "sending": "পাঠানো হচ্ছে...",
+    "success": "বার্তা সফলভাবে পাঠানো হয়েছে",
+    "error": "বার্তা পাঠাতে ব্যর্থ হয়েছে",
+    "required_field": "এই ক্ষেত্রটি প্রয়োজনীয়",
+    "invalid_email": "অনুগ্রহ করে একটি বৈধ ইমেল প্রবেশ করুন"
+  },
+  "quote": {
+    "title": "উদ্ধৃতি ক্যালকুলেটর",
+    "description": "আপনার প্রকল্পের উদ্ধৃতি গণনা করুন",
+    "service_type": "সেবার ধরন",
+    "complexity": "জটিলতা",
+    "timeline": "সময়সীমা",
+    "budget": "অনুমানিত বাজেট",
+    "calculate": "গণনা করুন",
+    "reset": "রিসেট করুন",
+    "get_quote": "উদ্ধৃতি পান",
+    "low": "কম",
+    "medium": "মাঝারি",
+    "high": "উচ্চ"
+  },
+  "cart": {
+    "title": "কেনাকাটার কার্ট",
+    "empty": "আপনার কার্ট খালি",
+    "item": "আইটেম",
+    "price": "মূল্য",
+    "quantity": "পরিমাণ",
+    "total": "মোট",
+    "subtotal": "সাবটোটাল",
+    "tax": "ট্যাক্স",
+    "shipping": "শিপিং",
+    "proceed_checkout": "চেকআউটে এগিয়ে যান",
+    "continue_shopping": "কেনাকাটা চালিয়ে যান",
+    "remove": "সরান",
+    "update": "আপডেট করুন",
+    "qty": "পরিমাণ"
+  },
+  "checkout": {
+    "title": "চেকআউট",
+    "billing": "বিলেয়িং তথ্য",
+    "shipping": "শিপিং তথ্য",
+    "payment": "পেমেন্ট তথ্য",
+    "order_summary": "অর্ডার সারসংক্ষেপ",
+    "complete_order": "অর্ডার সম্পন্ন করুন",
+    "order_placed": "অর্ডার সফলভাবে স্থাপন করা হয়েছে",
+    "order_id": "অর্ডার আইডি",
+    "thank_you": "আপনার অর্ডারের জন্য ধন্যবাদ!"
+  },
+  "auth": {
+    "login": "লগইন",
+    "register": "নিবন্ধন",
+    "email": "ইমেল",
+    "password": "পাসওয়ার্ড",
+    "confirm_password": "পাসওয়ার্ড নিশ্চিত করুন",
+    "name": "নাম",
+    "phone": "ফোন",
+    "submit": "জমা দিন",
+    "remember_me": "আমাকে মনে রাখুন",
+    "forgot_password": "পাসওয়ার্ড ভুলে গেছেন?",
+    "no_account": "কোন অ্যাকাউন্ট নেই?",
+    "already_account": "ইতিমধ্যে একটি অ্যাকাউন্ট আছে?",
+    "sign_up": "সাইন আপ করুন",
+    "sign_in": "সাইন ইন করুন",
+    "logging_in": "লগইন হচ্ছে...",
+    "registering": "নিবন্ধন হচ্ছে...",
+    "login_success": "লগইন সফল",
+    "register_success": "নিবন্ধন সফল",
+    "login_error": "লগইন ব্যর্থ হয়েছে",
+    "register_error": "নিবন্ধন ব্যর্থ হয়েছে",
+    "required_field": "এই ক্ষেত্রটি প্রয়োজনীয়",
+    "invalid_email": "অনুগ্রহ করে একটি বৈধ ইমেল প্রবেশ করুন",
+    "password_mismatch": "পাসওয়ার্ড মেলেনি",
+    "password_min": "পাসওয়ার্ড কমপক্ষে 6 টি অক্ষর হতে হবে"
+  },
+  "dashboard": {
+    "title": "ড্যাশবোর্ড",
+    "welcome": "স্বাগতম",
+    "orders": "অর্ডার",
+    "profile": "প্রোফাইল",
+    "settings": "সেটিংস",
+    "order_history": "অর্ডার ইতিহাস",
+    "recent_orders": "সাম্প্রতিক অর্ডার",
+    "no_orders": "কোন অর্ডার পাওয়া যায়নি",
+    "view_order": "অর্ডার দেখুন",
+    "order_status": "অর্ডার স্ট্যাটাস",
+    "order_date": "অর্ডার তারিখ",
+    "order_total": "অর্ডার মোট",
+    "edit_profile": "প্রোফাইল সম্পাদনা করুন",
+    "save_changes": "পরিবর্তন সংরক্ষণ করুন",
+    "updating": "আপডেট হচ্ছে...",
+    "update_success": "প্রোফাইল সফলভাবে আপডেট করা হয়েছে",
+    "update_error": "প্রোফাইল আপডেট করতে ব্যর্থ হয়েছে"
+  },
+  "admin": {
+    "title": "প্রশাসক প্যানেল",
+    "dashboard": "ড্যাশবোর্ড",
+    "leads": "লিড",
+    "orders": "অর্ডার",
+    "users": "ব্যবহারকারী",
+    "manage_leads": "লিড পরিচালনা করুন",
+    "manage_orders": "অর্ডার পরিচালনা করুন",
+    "manage_users": "ব্যবহারকারী পরিচালনা করুন",
+    "total_leads": "মোট লিড",
+    "total_orders": "মোট অর্ডার",
+    "total_users": "মোট ব্যবহারকারী",
+    "status": "স্ট্যাটাস",
+    "actions": "অ্যাকশন",
+    "edit": "সম্পাদনা করুন",
+    "delete": "মুছুন",
+    "confirm_delete": "আপনি কি এই আইটেম মুছে ফেলতে নিশ্চিত?",
+    "delete_success": "আইটেম সফলভাবে মুছে ফেলা হয়েছে",
+    "delete_error": "আইটেম মোছা ব্যর্থ হয়েছে"
+  },
+  "footer": {
+    "about": "সম্পর্কে",
+    "services": "সেবা",
+    "products": "পণ্য",
+    "blog": "ব্লগ",
+    "contact": "যোগাযোগ",
+    "privacy": "গোপনীয়তা নীতি",
+    "terms": "শর্তাবলী",
+    "follow_us": "আমাদের অনুসরণ করুন",
+    "copyright": "© 2026 এক্সেন্ট্রালাব। সর্বাধিকার সংরক্ষিত।",
+    "company": "কোম্পানি",
+    "legal": "আইনি",
+    "social": "সামাজিক মিডিয়া"
+  },
+  "errors": {
+    "404": "পৃষ্ঠা পাওয়া যায়নি",
+    "404_message": "আপনি যে পৃষ্ঠাটি খুঁজছেন তা বিদ্যমান নেই",
+    "go_home": "বাড়িতে যান",
+    "server_error": "সার্ভার ত্রুটি",
+    "try_again": "আবার চেষ্টা করুন",
+    "something_wrong": "কিছু ভুল হয়েছে"
+  },
+  "contact": {
+    "title": "আমাদের সাথে যোগাযোগ করুন",
+    "description": "আমাদের দলের সাথে যোগাযোগ করুন",
+    "name": "নাম",
+    "email": "ইমেল",
+    "phone": "ফোন",
+    "subject": "বিষয়",
+    "message": "বার্তা",
+    "send": "পাঠান",
+    "sending": "পাঠানো হচ্ছে...",
+    "success": "বার্তা সফলভাবে পাঠানো হয়েছে",
+    "error": "বার্তা পাঠাতে ব্যর্থ হয়েছে",
+    "required_field": "এই ক্ষেত্রটি প্রয়োজনীয়",
+    "invalid_email": "অনুগ্রহ করে একটি বৈধ ইমেল প্রবেশ করুন",
+    "optional": "ঐচ্ছিক"
+  },
+  "common": {
+    "loading": "লোড হচ্ছে...",
+    "save": "সংরক্ষণ করুন",
+    "cancel": "বাতিল করুন",
+    "delete": "মুছুন",
+    "edit": "সম্পাদনা করুন",
+    "back": "পিছনে",
+    "next": "পরবর্তী",
+    "prev": "পূর্ববর্তী",
+    "submit": "জমা দিন",
+    "search": "অনুসন্ধান",
+    "filter": "ফিল্টার করুন",
+    "sort": "সাজান",
+    "close": "বন্ধ করুন",
+    "yes": "হ্যাঁ",
+    "no": "না",
+    "success": "সফল",
+    "error": "ত্রুটি",
+    "warning": "সতর্কতা",
+    "info": "তথ্য",
+    "confirm": "নিশ্চিত করুন",
+    "date": "তারিখ",
+    "time": "সময়",
+    "status": "স্ট্যাটাস",
+    "actions": "অ্যাকশন",
+    "description": "বর্ণনা",
+    "details": "বিবরণ",
+    "all": "সব",
+    "browse_services": "সেবা ব্রাউজ করুন",
+    "no_items": "কোন আইটেম নেই",
+    "copied": "কপি করা হয়েছে",
+    "copy": "কপি"
+  },
+  "home": {
+    "title": "এআই অটোমেশন সমাধান",
+    "subtitle": "আপনার ব্যবসাকে বুদ্ধিমান অটোমেশনের সাথে রূপান্তরিত করুন",
+    "description": "অত্যাধুনিক এআই প্রযুক্তি দিয়ে আপনার ব্যবসায়িক প্রক্রিয়াগুলি স্বয়ংক্রিয় করুন",
+    "cta": "শুরু করুন",
+    "learn_more": "আরও জানুন",
+    "features": "বৈশিষ্ট্য",
+    "our_services": "আমাদের সেবা",
+    "why_choose_us": "কেন আমাদের বেছে নিন",
+    "stats": {
+      "projects_completed": "সম্পূর্ণ প্রকল্প",
+      "happy_clients": "সন্তুষ্ট ক্লায়েন্ট",
+      "client_satisfaction": "ক্লায়েন্ট সন্তুষ্টি",
+      "security_monitoring": "নিরাপত্তা পর্যবেক্ষণ"
+    },
+    "headline": {
+      "digital_presence": "ডিজিটাল উপস্থিতি",
+      "secure_systems": "সুরক্ষিত সিস্টেম",
+      "business_growth": "ব্যবসায়িক বৃদ্ধি"
+    },
+    "ai_tool": {
+      "badge": "বিনামূল্যে এআই টুল — কোন লগইন প্রয়োজন নেই",
+      "title": "এআই দিয়ে কন্টেন্ট তৈরি করুন",
+      "subtitle": "কয়েক সেকেন্ডে।",
+      "description": "Claude দ্বারা চালিত। একটি সরঞ্জাম চয়ন করুন, আপনার টোন সেট করুন এবং তৈরি করুন।"
+    },
+    "ai_tabs": {
+      "copywriter": "✍️ কপিরাইটার",
+      "email": "📧 ইমেল",
+      "seo": "🔍 এসইও"
+    },
+    "tones": {
+      "professional": "পেশাদার",
+      "casual": "নৈমিত্তিক",
+      "bold": "সাহসী",
+      "friendly": "বন্ধুত্বপূর্ণ",
+      "persuasive": "প্রভাবশালী"
+    },
+    "lengths": {
+      "short": "ছোট",
+      "medium": "মাঝারি",
+      "long": "দীর্ঘ"
+    },
+    "scroll_indicator": "স্ক্রল করুন"
+  },
+  "blog_page": {
+    "hero": {
+      "badge": "অন্তর্দৃষ্টি",
+      "title": "প্রযুক্তি ব্লগ",
+      "description": "সাইবার নিরাপত্তা, এআই এবং আধুনিক প্রকৌশল সম্পর্কে বিশেষজ্ঞ নিবন্ধ।"
+    },
+    "search": {
+      "placeholder": "নিবন্ধ অনুসন্ধান করুন…"
+    },
+    "categories": {
+      "all": "সব",
+      "cybersecurity": "সাইবার নিরাপত্তা",
+      "ai_automation": "এআই অটোমেশন",
+      "web_dev": "ওয়েব ডেভেলপমেন্ট",
+      "saas_dev": "সাস ডেভেলপমেন্ট",
+      "devops": "ডেভঅপস",
+      "general": "সাধারণ"
+    },
+    "error": {
+      "title": "পোস্ট লোড করতে পারেনি",
+      "description": "আপনার সংযোগ পরীক্ষা করুন বা শীঘ্রই আবার চেষ্টা করুন।",
+      "retry_button": "পুনরায় চেষ্টা করুন"
+    },
+    "no_results": {
+      "message": "কোন নিবন্ধ আপনার অনুসন্ধানের সাথে মেলে না।"
+    },
+    "pagination": {
+      "prev": "← পূর্ববর্তী",
+      "next": "পরবর্তী →"
+    },
+    "reading_time": "মিনিট পড়ুন"
+  },
+  "blog_post": {
+    "not_found": {
+      "title": "নিবন্ধ পাওয়া যায়নি",
+      "back_button": "← ব্লগে ফিরুন"
+    },
+    "back_button": "← ব্লগে ফিরুন",
+    "meta": {
+      "views": "ভিউ",
+      "read_time": "মিনিট পড়ুন"
+    },
+    "preview_notice": "✏️ সম্পূর্ণ নিবন্ধ শীঘ্রই আসছে — প্রিভিউ দেখাচ্ছে।",
+    "comments": {
+      "title": "💬 মন্তব্য",
+      "name_placeholder": "আপনার নাম (ঐচ্ছিক)",
+      "posted_toast": "মন্তব্য প্রকাশিত!"
+    },
+    "actions": {
+      "like": "পছন্দ",
+      "save": "সংরক্ষণ করুন",
+      "saved": "সংরক্ষিত",
+      "copy_link": "🔗 লিংক কপি করুন",
+      "copied": "✓ কপি করা হয়েছে"
+    },
+    "toasts": {
+      "link_copied": "লিংক ক্লিপবোর্ডে কপি করা হয়েছে!",
+      "copy_error": "লিংক কপি করতে পারেনি",
+      "removed_saved": "সংরক্ষিত থেকে অপসারণ করা হয়েছে",
+      "article_saved": "নিবন্ধ সংরক্ষিত!"
+    }
+  },
+  "admin_page": {
+    "header": {
+      "title": "অ্যাডমিন ড্যাশবোর্ড"
+    },
+    "stats": {
+      "total_users": "মোট ব্যবহারকারী",
+      "total_orders": "মোট অর্ডার",
+      "total_revenue": "মোট আয়",
+      "leads": "লিড"
+    },
+    "overview": {
+      "recent_leads": "সাম্প্রতিক লিড"
+    },
+    "table": {
+      "contact": "যোগাযোগ",
+      "score": "স্কোর",
+      "service": "সেবা",
+      "budget": "বাজেট",
+      "status": "স্ট্যাটাস",
+      "actions": "অ্যাকশন"
+    },
+    "empty": {
+      "no_leads": "এখনও কোন লিড নেই"
+    },
+    "leads": {
+      "title": "লিড"
+    },
+    "scores": {
+      "hot": "হট (80+)",
+      "warm": "উষ্ণ (60+)",
+      "cool": "শীতল (40+)",
+      "cold": "ঠান্ডা (<40)"
+    },
+    "export_csv": "↓ CSV রপ্তানি করুন",
+    "orders": {
+      "title": "সমস্ত অর্ডার"
+    },
+    "users": {
+      "title": "সমস্ত ব্যবহারকারী"
+    },
+    "user_status": {
+      "active": "সক্রিয়",
+      "suspended": "স্থগিত"
+    },
+    "actions_menu": {
+      "propose": "প্রস্তাব",
+      "followup": "অনুসরণ",
+      "suspend": "স্থগিত করুন",
+      "activate": "সক্রিয় করুন"
+    }
+  },
+  "dashboard_page": {
+    "greeting": "স্বাগতম ফিরে",
+    "overview_subtitle": "এখানে আপনার অ্যাকাউন্ট কার্যকলাপের একটি ওভারভিউ রয়েছে।",
+    "stats": {
+      "total_orders": "মোট অর্ডার",
+      "active_services": "সক্রিয় সেবা",
+      "total_spent": "মোট ব্যয়"
+    },
+    "cta_card": {
+      "title": "কিছু নতুন প্রয়োজন?",
+      "description": "আমাদের সম্পূর্ণ সেবা ক্যাটালগ ব্রাউজ করুন এবং কার্টে যোগ করুন।"
+    },
+    "cta_button": "সেবা ব্রাউজ করুন →",
+    "nav": {
+      "overview": "ওভারভিউ",
+      "my_orders": "আমার অর্ডার",
+      "profile": "প্রোফাইল",
+      "referral": "রেফারেল",
+      "shop": "দোকান"
+    },
+    "orders": {
+      "title": "আমার অর্ডার",
+      "empty": "এখনও কোন অর্ডার নেই",
+      "browse_button": "সেবা ব্রাউজ করুন →",
+      "invoice_button": "↓ ইনভয়েস"
+    },
+    "profile": {
+      "title": "আমার প্রোফাইল",
+      "personal_info_header": "ব্যক্তিগত তথ্য",
+      "name_label": "নাম",
+      "company_label": "কোম্পানি",
+      "phone_label": "ফোন",
+      "save_button": "পরিবর্তন সংরক্ষণ করুন"
+    },
+    "password": {
+      "title": "পাসওয়ার্ড পরিবর্তন করুন",
+      "current_label": "বর্তমান পাসওয়ার্ড",
+      "new_label": "নতুন পাসওয়ার্ড (সর্বনিম্ন ৬ অক্ষর)",
+      "update_button": "পাসওয়ার্ড আপডেট করুন"
+    }
+  },
+  "not_found": {
+    "number": "৪০৪",
+    "title": "পৃষ্ঠা পাওয়া যায়নি",
+    "description": "আপনি যে পৃষ্ঠাটি খুঁজছেন তা বিদ্যমান নেই বা সরানো হয়েছে।",
+    "home_button": "বাড়িতে যান →",
+    "contact_button": "আমাদের সাথে যোগাযোগ করুন"
+  },
+  "order_success": {
+    "title": "পেমেন্ট সফল!",
+    "confirmation_message": "আপনার অর্ডার নিশ্চিত করা হয়েছে।",
+    "details_message": "আমাদের দল ২৪ ঘন্টার মধ্যে আপনার প্রকল্প শুরু করতে যোগাযোগ করবে। অর্ডার সারসংক্ষেপের জন্য আপনার ইমেল পরীক্ষা করুন।",
+    "steps": {
+      "confirmation_email": "নিশ্চিতকরণ ইমেল পাঠানো হয়েছে",
+      "scope_call": "২৪ ঘন্টার মধ্যে স্কোপ কল",
+      "build_starts": "তাত্ক্ষণিকভাবে নির্মাণ শুরু হয়"
+    },
+    "orders_button": "আমার অর্ডার দেখুন →",
+    "browse_button": "আরও সেবা ব্রাউজ করুন"
+  },
+  "portfolio_page": {
+    "categories": {
+      "all": "সব",
+      "demo": "ডেমো"
+    },
+    "results": {
+      "professional_brand": "পেশাদার ব্র্যান্ড পরিচয়",
+      "responsive_layout": "সম্পূর্ণ প্রতিক্রিয়াশীল লেআউট",
+      "color_system": "কাস্টম রঙ সিস্টেম"
+    },
+    "stats": {
+      "projects_completed": "সম্পূর্ণ প্রকল্প",
+      "happy_clients": "সন্তুষ্ট ক্লায়েন্ট",
+      "ongoing_projects": "চলমান প্রকল্প",
+      "team_members": "দল সদস্য"
+    }
+  },
+  "products_page": {
+    "hero": {
+      "badge": "সাস পণ্য",
+      "title_part1": "নিরাপত্তা সরঞ্জাম দ্বারা নির্মিত",
+      "title_part2": "এক্সেন্ট্রালাব",
+      "description": "প্লাগ-এন্ড-প্লে নিরাপত্তা, অটোমেশন এবং বৃদ্ধি পণ্য — মিনিটের মধ্যে শুরু করুন।"
+    },
+    "stats": {
+      "scans_completed": "নিরাপত্তা স্ক্যান সম্পূর্ণ",
+      "uptime": "সিস্টেম আপটাইম",
+      "active_clients": "সক্রিয় ক্লায়েন্ট",
+      "response_time": "গড় সমস্যা প্রতিক্রিয়া সময়"
+    },
+    "categories": {
+      "all": "সব",
+      "cybersecurity": "সাইবার নিরাপত্তা",
+      "ai_automation": "এআই / অটোমেশন",
+      "seo_marketing": "এসইও এবং মার্কেটিং"
+    },
+    "product": {
+      "start_trial_button": "🛒 বিনামূল্যে ট্রায়াল শুরু করুন",
+      "added_to_cart": "✓ কার্টে যোগ করা হয়েছে",
+      "get_started_button": "শুরু করুন →",
+      "demo_button": "ডেমো"
+    },
+    "comparison": {
+      "title": "বৈশিষ্ট্য ম্যাট্রিক্স",
+      "subtitle": "সমস্ত পরিকল্পনা তুলনা করুন",
+      "note": "শুধুমাত্র নিরাপত্তা পণ্য — মোবাইলে অনুভূমিকভাবে স্ক্রল করুন",
+      "feature_header": "বৈশিষ্ট্য"
+    },
+    "enterprise": {
+      "title": "ব্রীচ হতে পারে না এমন দলের জন্য নির্মিত",
+      "description": "সমস্ত পরিকল্পনায় সবকিছু এবং নিবেদিত সহায়তা...",
+      "contact_button": "বিক্রয়ের সাথে কথা বলুন →",
+      "case_studies_button": "কেস স্টাডি দেখুন"
+    }
+  },
+  "referral_page": {
+    "header": {
+      "title": "🎯 রেফারেল প্রোগ্রাম",
+      "subtitle": "প্রতিটি সফল রেফারেলের জন্য ১০% কমিশন অর্জন করুন"
+    },
+    "stats": {
+      "total_referrals": "মোট রেফারেল",
+      "active_referrals": "সক্রিয় রেফারেল",
+      "completed": "সম্পূর্ণ",
+      "total_earnings": "মোট আয়"
+    },
+    "link_section": {
+      "title": "আপনার রেফারেল লিংক"
+    },
+    "link_button": "লিংক কপি করুন",
+    "link_button_copied": "✓ কপি করা হয়েছে",
+    "invite_section": {
+      "title": "বন্ধুদের আমন্ত্রণ জানান"
+    },
+    "invite_input_placeholder": "বন্ধুর ইমেল প্রবেশ করুন",
+    "invite_button": "আমন্ত্রণ জানান",
+    "invite_button_sending": "পাঠানো হচ্ছে...",
+    "messages": {
+      "empty_email": "অনুগ্রহ করে একটি ইমেল ঠিকানা প্রবেশ করুন",
+      "success": "রেফারেল আমন্ত্রণ সফলভাবে পাঠানো হয়েছে!",
+      "error": "আমন্ত্রণ পাঠাতে ত্রুটি"
+    },
+    "loading": "রেফারেল ডেটা লোড হচ্ছে...",
+    "table": {
+      "title": "আপনার রেফারেল",
+      "referee_header": "রেফারি",
+      "status_header": "স্ট্যাটাস",
+      "order_value_header": "অর্ডার মান",
+      "commission_header": "কমিশন",
+      "date_header": "তারিখ"
+    },
+    "status": {
+      "completed": "সম্পূর্ণ",
+      "activated": "সক্রিয় করা",
+      "pending": "অপেক্ষারত"
+    },
+    "empty_state": "এখনও কোন রেফারেল নেই। বন্ধুদের আমন্ত্রণ জানান!"
+  },
+  "shop_page": {
+    "packs": {
+      "badges": {
+        "entry_point": "প্রবেশ পয়েন্ট",
+        "most_popular": "সবচেয়ে জনপ্রিয়",
+        "full_power": "সম্পূর্ণ ক্ষমতা",
+        "core_security": "মূল নিরাপত্তা",
+        "high_value": "🔥 উচ্চ মূল্য"
+      },
+      "startup_pack": "স্টার্টআপ প্যাক",
+      "startup_pack_tagline": "নতুন ব্যবসা এবং এমভিপির জন্য উপযুক্ত",
+      "sme_pack": "এসএমই প্যাক",
+      "enterprise_pack": "এন্টারপ্রাইজ প্যাক",
+      "security_audit": "নিরাপত্তা অডিট"
+    },
+    "price_info": {
+      "delivery_label": "ডেলিভারি",
+      "support_label": "সহায়তা",
+      "pages_label": "পৃষ্ঠা",
+      "tech_label": "প্রযুক্তি"
+    },
+    "testimonials": {
+      "quote_1": "দুর্দান্ত সেবা!"
+    },
+    "faqs": {
+      "question_1": "কী অন্তর্ভুক্ত রয়েছে?",
+      "answer_1": "আমাদের প্যাকেজগুলি ব্যাপক সেবা অন্তর্ভুক্ত করে"
+    }
+  },
+  "team_page": {
+    "hero": {
+      "badge": "কাজের পিছনের মানুষ",
+      "title": "দলটি পূরণ করুন।"
+    },
+    "stats": {
+      "core_team_members": "মূল দল সদস্য",
+      "projects_completed": "সম্পূর্ণ প্রকল্প",
+      "ongoing_projects": "চলমান প্রকল্প",
+      "happy_clients": "সন্তুষ্ট ক্লায়েন্ট"
+    },
+    "expertise": {
+      "web_development": "ওয়েব ডেভেলপমেন্ট",
+      "ecommerce": "ই-কমার্স",
+      "custom_web_systems": "কাস্টম ওয়েব সিস্টেম",
+      "ui_ux_design": "ইউআই/ইউএক্স ডিজাইন",
+      "cybersecurity": "সাইবার নিরাপত্তা",
+      "digital_marketing": "ডিজিটাল মার্কেটিং"
+    },
+    "member_badges": {
+      "founder": "প্রতিষ্ঠাতা"
+    }
+  }
+}

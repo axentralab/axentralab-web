@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useMatch } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import api, { apiErrorMessage } from '../services/api';
@@ -203,6 +204,7 @@ function ProfileTab() {
 }
 
 export default function DashboardPage() {
+  const { t } = useTranslation();
   const { user, logout }  = useAuth();
   const navigate          = useNavigate();
   const [orders, setOrders]           = useState([]);

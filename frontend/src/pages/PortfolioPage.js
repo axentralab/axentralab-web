@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 // ── Project Data ──────────────────────────────────────────────────────────────
 const PROJECTS = [
@@ -1237,6 +1238,7 @@ const HERO_BG_IMAGE = process.env.REACT_APP_HERO_BG_IMAGE || '/images/hero-bg.pn
 
 // ── Main Page ─────────────────────────────────────────────────────────────────
 export default function PortfolioPage() {
+  const { t } = useTranslation();
   const [activeCategory, setActiveCategory] = useState("All");
   const [search, setSearch] = useState("");
   const [activeStack, setActiveStack] = useState("");

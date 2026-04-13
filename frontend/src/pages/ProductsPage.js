@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useState } from 'react';
@@ -125,6 +126,7 @@ const getCat = (tag) => {
 };
 
 export default function ProductsPage() {
+  const { t } = useTranslation();
   const { addToCart, cart } = useCart();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();

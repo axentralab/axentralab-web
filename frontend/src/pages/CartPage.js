@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
@@ -10,22 +11,23 @@ const PRIMARY2 = '#A78BFA';
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity, clearCart, total, count } = useCart();
   const { isAuthenticated } = useAuth();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const toast    = useToast();
 
   const handleRemove = (serviceId, plan, title) => {
     removeFromCart(serviceId, plan);
-    toast.info(`"${title}" removed from cart`);
+    toast.info(`"${title}" ${t('cart.remove')}d from cart`);
   };
 
-  const handleClear = () => { clearCart(); toast.info('Cart cleared'); };
+  const handleClear = () => { clearCart(); toast.info(t('cart.empty')); };
 
   if (count === 0) return (
     <div style={{ minHeight: '80vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '80px 5%' }}>
       <div style={{ fontSize: 64, marginBottom: 20 }}>🛒</div>
-      <h2 style={{ fontFamily: "'Sora',sans-serif", fontSize: 26, fontWeight: 800, color: '#fff', marginBottom: 12 }}>Your cart is empty</h2>
-      <p style={{ color: 'rgba(255,255,255,0.45)', marginBottom: 28 }}>Browse our services and add them to your cart.</p>
-      <button onClick={() => navigate('/services')} className="btn-primary" style={{ padding: '12px 28px' }}>Browse Services →</button>
+      <h2 style={{ fontFamily: "'Sora',sans-serif", fontSize: 26, fontWeight: 800, color: '#fff', marginBottom: 12 }}>{t('cart.empty')}</h2>
+      <p style={{ color: 'rgba(255,255,255,0.45)', marginBottom: 28 }}>{t('services.description')}</p>
+      <button onClick={() => navigate('/services')} className="btn-primary" style={{ padding: '12px 28px' }}>{t('services.all_services')} →</button>
     </div>
   );
 
@@ -65,8 +67,8 @@ export default function CartPage() {
         <div style={{ position: 'fixed', top: '20%', left: '-5%', width: 450, height: 450, borderRadius: '50%', background: 'radial-gradient(circle,rgba(99,102,241,0.1),transparent 70%)', pointerEvents: 'none', zIndex: 0, animation: 'glowFloat 5s ease-in-out infinite' }} />
 
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <h1 style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(26px,4vw,44px)', fontWeight: 900, color: '#fff', letterSpacing: -1, marginBottom: 8 }}>Your Cart</h1>
-          <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, marginBottom: 36, fontFamily: "'Space Mono',monospace" }}>{count} item{count !== 1 ? 's' : ''} · ${total.toLocaleString()} total</p>
+          <h1 style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(26px,4vw,44px)', fontWeight: 900, color: '#fff', letterSpacing: -1, marginBottom: 8 }}>{t('cart.title')}</h1>
+          <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, marginBottom: 36, fontFamily: "'Space Mono',monospace" }}>{count} {t('cart.item')}{count !== 1 ? 's' : ''} · ${total.toLocaleString()} {t('cart.total')}</p>
 
           <div className="cart-grid">
 
@@ -105,7 +107,7 @@ export default function CartPage() {
               ))}
               <button onClick={handleClear}
                 style={{ marginTop: 8, fontSize: 12, color: 'rgba(255,255,255,0.25)', background: 'none', border: 'none', textDecoration: 'underline', cursor: 'pointer', fontFamily: "'Space Mono',monospace" }}>
-                Clear cart
+                {t('common.cancel')}
               </button>
             </div>
 
@@ -115,7 +117,7 @@ export default function CartPage() {
                 {/* Top gradient bar */}
                 <div style={{ height: 3, background: `linear-gradient(90deg,${PRIMARY},${ACCENT})`, margin: '-28px -28px 24px' }} />
 
-                <h3 style={{ fontFamily: "'Sora',sans-serif", fontSize: 17, fontWeight: 800, color: '#fff', marginBottom: 20 }}>Order Summary</h3>
+                <h3 style={{ fontFamily: "'Sora',sans-serif", fontSize: 17, fontWeight: 800, color: '#fff', marginBottom: 20 }}>{t('checkout.order_summary')}</h3>
                 {cart.map((item, i) => (
                   <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.05)', fontSize: 13, color: 'rgba(255,255,255,0.55)' }}>
                     <span style={{ flex: 1, marginRight: 8, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.serviceTitle} ({item.plan}) ×{item.quantity || 1}</span>
@@ -123,26 +125,26 @@ export default function CartPage() {
                   </div>
                 ))}
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '16px 0', fontSize: 20, fontWeight: 900, fontFamily: "'Sora',sans-serif", color: '#fff', borderTop: '1px solid rgba(255,255,255,0.08)', marginTop: 8 }}>
-                  <span>Total</span>
+                  <span>{t('cart.total')}</span>
                   <span style={{ background: `linear-gradient(135deg,${PRIMARY2},${ACCENT})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>${total.toLocaleString()}</span>
                 </div>
 
                 {isAuthenticated ? (
                   <button onClick={() => navigate('/checkout')} className="cart-checkout-btn"
                     style={{ width: '100%', padding: '14px', fontSize: 15, background: `linear-gradient(135deg,${PRIMARY},${ACCENT})`, border: 'none', borderRadius: 12, color: '#fff', fontFamily: "'Sora',sans-serif", fontWeight: 800, cursor: 'pointer', boxShadow: `0 4px 18px ${PRIMARY}40`, marginTop: 4 }}>
-                    Proceed to Checkout →
+                    {t('cart.proceed_checkout')} →
                   </button>
                 ) : (
                   <div>
                     <button onClick={() => navigate('/login', { state: { from: '/checkout' } })} className="cart-checkout-btn"
                       style={{ width: '100%', padding: '14px', fontSize: 14, background: `linear-gradient(135deg,${PRIMARY},${ACCENT})`, border: 'none', borderRadius: 12, color: '#fff', fontFamily: "'Sora',sans-serif", fontWeight: 800, cursor: 'pointer', boxShadow: `0 4px 18px ${PRIMARY}40`, marginBottom: 10, marginTop: 4 }}>
-                      Login to Checkout →
+                      {t('auth.login')} {t('cart.checkout')} →
                     </button>
                     <button onClick={() => navigate('/register')}
                       style={{ width: '100%', padding: '12px', fontSize: 13, background: 'transparent', border: `1px solid ${PRIMARY}35`, borderRadius: 12, color: PRIMARY2, fontFamily: "'Sora',sans-serif", fontWeight: 700, cursor: 'pointer', transition: 'all 0.18s' }}
                       onMouseEnter={e => e.currentTarget.style.background = `${PRIMARY}12`}
                       onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
-                      Create Account
+                      {t('auth.sign_up')}
                     </button>
                   </div>
                 )}

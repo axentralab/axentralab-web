@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import api from '../services/api';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
 import ProcessSection from '../components/sections/ProcessSection';
@@ -642,6 +643,7 @@ function DashboardPreview() {
 // ─── Main Component ────────────────────────────────────────────────────────────
 
 export default function HomePage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
