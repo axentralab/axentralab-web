@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { protect, adminOnly } = require('../middleware/auth');
+const { auth, adminOnly } = require('../middleware/auth');
 const chatbotController = require('../controllers/chatbotController');
 
 /**
@@ -24,6 +24,6 @@ router.post('/convert/:sessionId', chatbotController.convertChatToLead);
  */
 
 // Get analytics
-router.get('/admin/analytics', protect, adminOnly, chatbotController.getAnalytics);
+router.get('/admin/analytics', auth, adminOnly, chatbotController.getAnalytics);
 
 module.exports = router;

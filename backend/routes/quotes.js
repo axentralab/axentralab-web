@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { protect, adminOnly } = require('../middleware/auth');
+const { auth, adminOnly } = require('../middleware/auth');
 const quoteController = require('../controllers/quoteController');
 
 /**
@@ -18,15 +18,15 @@ router.get('/:id', quoteController.getQuote);
  */
 
 // List all quotes
-router.get('/', protect, adminOnly, quoteController.listQuotes);
+router.get('/', auth, adminOnly, quoteController.listQuotes);
 
 // Convert quote to lead
-router.post('/:id/convert', protect, adminOnly, quoteController.convertToLead);
+router.post('/:id/convert', auth, adminOnly, quoteController.convertToLead);
 
 // Delete quote
-router.delete('/:id', protect, adminOnly, quoteController.deleteQuote);
+router.delete('/:id', auth, adminOnly, quoteController.deleteQuote);
 
 // Get analytics
-router.get('/admin/analytics', protect, adminOnly, quoteController.getAnalytics);
+router.get('/admin/analytics', auth, adminOnly, quoteController.getAnalytics);
 
 module.exports = router;
