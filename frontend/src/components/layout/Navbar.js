@@ -1,17 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 
 export default function Navbar() {
   const { isAuthenticated, user, logout, isAdmin } = useAuth();
   const { count } = useCart();
-  const { t, i18n } = useTranslation();
   const [scrolled, setScrolled]       = useState(false);
   const [menuOpen, setMenuOpen]       = useState(false);
   const [userMenu, setUserMenu]       = useState(false);
-  const [langMenu, setLangMenu]       = useState(false);
   const navigate  = useNavigate();
   const location  = useLocation();
 
@@ -26,22 +23,16 @@ export default function Navbar() {
   useEffect(() => { setMenuOpen(false); }, [location.pathname]);
 
   const handleLogout = () => { logout(); navigate('/'); };
-  
-  const changeLanguage = (lang) => {
-    i18n.changeLanguage(lang);
-    localStorage.setItem('language', lang);
-    setLangMenu(false);
-  };
 
   const navLinks = [
-    { to: '/',          label: t('nav.services'), key: 'nav.services' },
-    { to: '/services',  label: t('nav.services'), key: 'nav.services' },
-    { to: '/products',  label: t('nav.products'), key: 'nav.products' },
-    { to: '/portfolio', label: t('nav.portfolio'), key: 'nav.portfolio' },
-    { to: '/team',      label: t('nav.team'), key: 'nav.team' },
-    { to: '/blog',      label: t('nav.blog'), key: 'nav.blog' },
-    { to: '/contact',   label: t('nav.contact'), key: 'nav.contact' },
-    { to: '/quote',     label: `💰 ${t('nav.quote')}`, key: 'nav.quote', highlight: true },
+    { to: '/',          label: 'Services', key: 'nav.services' },
+    { to: '/services',  label: 'Services', key: 'nav.services' },
+    { to: '/products',  label: 'Products', key: 'nav.products' },
+    { to: '/portfolio', label: 'Portfolio', key: 'nav.portfolio' },
+    { to: '/team',      label: 'Team', key: 'nav.team' },
+    { to: '/blog',      label: 'Blog', key: 'nav.blog' },
+    { to: '/contact',   label: 'Contact', key: 'nav.contact' },
+    { to: '/quote',     label: '💰 Quote', key: 'nav.quote', highlight: true },
   ];
 
   const active = (path) =>
@@ -114,27 +105,6 @@ export default function Navbar() {
             )}
           </Link>
 
-          {/* Language Switcher */}
-          <div style={{ position: 'relative', marginLeft: 8 }}>
-            <button onClick={() => setLangMenu(o => !o)} style={{ padding: '8px 14px', borderRadius: 8, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', fontWeight: 600, fontSize: 13, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6 }}>
-              🌐 {i18n.language.toUpperCase()}
-            </button>
-            {langMenu && (
-              <div style={{ position: 'absolute', right: 0, top: '110%', background: '#0F172A', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: 8, minWidth: 140, boxShadow: '0 16px 40px rgba(0,0,0,0.5)', zIndex: 100 }}>
-                <button onClick={() => changeLanguage('en')} style={{ width: '100%', textAlign: 'left', padding: '10px 14px', borderRadius: 8, background: i18n.language === 'en' ? 'rgba(139,92,246,0.1)' : 'none', border: 'none', fontSize: 14, color: i18n.language === 'en' ? '#8B5CF6' : 'rgba(255,255,255,0.75)', cursor: 'pointer' }}
-                  onMouseEnter={e => e.target.style.background = 'rgba(255,255,255,0.05)'}
-                  onMouseLeave={e => e.target.style.background = i18n.language === 'en' ? 'rgba(139,92,246,0.1)' : 'none'}>
-                  🇺🇸 English
-                </button>
-                <button onClick={() => changeLanguage('bn')} style={{ width: '100%', textAlign: 'left', padding: '10px 14px', borderRadius: 8, background: i18n.language === 'bn' ? 'rgba(139,92,246,0.1)' : 'none', border: 'none', fontSize: 14, color: i18n.language === 'bn' ? '#8B5CF6' : 'rgba(255,255,255,0.75)', cursor: 'pointer' }}
-                  onMouseEnter={e => e.target.style.background = 'rgba(255,255,255,0.05)'}
-                  onMouseLeave={e => e.target.style.background = i18n.language === 'bn' ? 'rgba(139,92,246,0.1)' : 'none'}>
-                  🇧🇩 বাংলা
-                </button>
-              </div>
-            )}
-          </div>
-
           {/* Auth */}
           {isAuthenticated ? (
             <div style={{ position: 'relative', marginLeft: 8 }}>
@@ -149,33 +119,33 @@ export default function Navbar() {
                   <Link to="/dashboard" onClick={() => setUserMenu(false)} style={{ display: 'block', padding: '10px 14px', borderRadius: 8, fontSize: 14, color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}
                     onMouseEnter={e => e.target.style.background = 'rgba(255,255,255,0.05)'}
                     onMouseLeave={e => e.target.style.background = 'none'}>
-                    📊 {t('dashboard.title')}
+                    📊 Dashboard
                   </Link>
                   <Link to="/dashboard/orders" onClick={() => setUserMenu(false)} style={{ display: 'block', padding: '10px 14px', borderRadius: 8, fontSize: 14, color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}
                     onMouseEnter={e => e.target.style.background = 'rgba(255,255,255,0.05)'}
                     onMouseLeave={e => e.target.style.background = 'none'}>
-                    📦 {t('dashboard.order_history')}
+                    📦 Order History
                   </Link>
                   {isAdmin && (
                     <Link to="/admin" onClick={() => setUserMenu(false)} style={{ display: 'block', padding: '10px 14px', borderRadius: 8, fontSize: 14, color: '#8B5CF6', textDecoration: 'none' }}
                       onMouseEnter={e => e.target.style.background = 'rgba(139,92,246,0.08)'}
                       onMouseLeave={e => e.target.style.background = 'none'}>
-                      ⚙️ {t('admin.title')}
+                      ⚙️ Admin Panel
                     </Link>
                   )}
                   <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', margin: '4px 0' }} />
                   <button onClick={handleLogout} style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: 'none', border: 'none', textAlign: 'left', fontSize: 14, color: '#EF4444', cursor: 'pointer' }}
                     onMouseEnter={e => e.target.style.background = 'rgba(239,68,68,0.08)'}
                     onMouseLeave={e => e.target.style.background = 'none'}>
-                    🚪 {t('nav.logout')}
+                    🚪 Logout
                   </button>
                 </div>
               )}
             </div>
           ) : (
             <div style={{ display: 'flex', gap: 8, marginLeft: 8 }}>
-              <Link to="/login"    style={{ padding: '8px 16px', borderRadius: 8, fontWeight: 600, fontSize: 13, color: 'rgba(255,255,255,0.75)', border: '1px solid rgba(255,255,255,0.12)', textDecoration: 'none' }}>{t('auth.login')}</Link>
-              <Link to="/register" style={{ padding: '8px 16px', borderRadius: 8, background: '#8B5CF6', fontWeight: 700, fontSize: 13, color: '#000', textDecoration: 'none' }}>{t('auth.sign_up')}</Link>
+              <Link to="/login"    style={{ padding: '8px 16px', borderRadius: 8, fontWeight: 600, fontSize: 13, color: 'rgba(255,255,255,0.75)', border: '1px solid rgba(255,255,255,0.12)', textDecoration: 'none' }}>Login</Link>
+              <Link to="/register" style={{ padding: '8px 16px', borderRadius: 8, background: '#8B5CF6', fontWeight: 700, fontSize: 13, color: '#000', textDecoration: 'none' }}>Sign Up</Link>
             </div>
           )}
         </div>
@@ -215,23 +185,15 @@ export default function Navbar() {
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', margin: '8px 0' }} />
           {isAuthenticated ? (
             <>
-              <Link to="/dashboard" style={{ padding: '14px 20px', borderRadius: 12, fontWeight: 600, fontSize: 15, color: '#8B5CF6', textDecoration: 'none' }}>{t('dashboard.title')}</Link>
-              <button onClick={handleLogout} style={{ padding: '14px 20px', borderRadius: 12, background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.2)', fontWeight: 700, fontSize: 15, color: '#EF4444', textAlign: 'left', cursor: 'pointer' }}>{t('nav.logout')}</button>
+              <Link to="/dashboard" style={{ padding: '14px 20px', borderRadius: 12, fontWeight: 600, fontSize: 15, color: '#8B5CF6', textDecoration: 'none' }}>Dashboard</Link>
+              <button onClick={handleLogout} style={{ padding: '14px 20px', borderRadius: 12, background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.2)', fontWeight: 700, fontSize: 15, color: '#EF4444', textAlign: 'left', cursor: 'pointer' }}>Logout</button>
             </>
           ) : (
             <>
-              <Link to="/login"    style={{ padding: '14px 20px', borderRadius: 12, background: 'rgba(255,255,255,0.05)', fontWeight: 600, fontSize: 15, color: '#fff', textAlign: 'center', textDecoration: 'none' }}>{t('auth.login')}</Link>
-              <Link to="/register" style={{ padding: '14px 20px', borderRadius: 12, background: '#8B5CF6', fontWeight: 700, fontSize: 15, color: '#000', textAlign: 'center', textDecoration: 'none' }}>{t('auth.sign_up')}</Link>
+              <Link to="/login"    style={{ padding: '14px 20px', borderRadius: 12, background: 'rgba(255,255,255,0.05)', fontWeight: 600, fontSize: 15, color: '#fff', textAlign: 'center', textDecoration: 'none' }}>Login</Link>
+              <Link to="/register" style={{ padding: '14px 20px', borderRadius: 12, background: '#8B5CF6', fontWeight: 700, fontSize: 15, color: '#000', textAlign: 'center', textDecoration: 'none' }}>Sign Up</Link>
             </>
           )}
-          <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', margin: '8px 0' }} />
-          <div style={{ padding: '14px 20px', borderRadius: 12, background: 'rgba(255,255,255,0.05)' }}>
-            <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 8 }}>🌐 {t('nav.language')}</div>
-            <div style={{ display: 'flex', gap: 8 }}>
-              <button onClick={() => changeLanguage('en')} style={{ flex: 1, padding: '8px 12px', borderRadius: 8, background: i18n.language === 'en' ? '#8B5CF6' : 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)', color: i18n.language === 'en' ? '#000' : '#fff', fontWeight: 600, fontSize: 13, cursor: 'pointer' }}>English</button>
-              <button onClick={() => changeLanguage('bn')} style={{ flex: 1, padding: '8px 12px', borderRadius: 8, background: i18n.language === 'bn' ? '#8B5CF6' : 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)', color: i18n.language === 'bn' ? '#000' : '#fff', fontWeight: 600, fontSize: 13, cursor: 'pointer' }}>বাংলা</button>
-            </div>
-          </div>
         </div>
       )}
     </>

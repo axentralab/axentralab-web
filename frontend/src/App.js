@@ -1,7 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import { I18nextProvider } from 'react-i18next';
-import i18n from './i18n/config';
 
 import { AuthProvider }  from './context/AuthContext';
 import { CartProvider }  from './context/CartContext';
@@ -59,16 +57,15 @@ function AppLayout({ children }) {
 
 export default function App() {
   return (
-    <I18nextProvider i18n={i18n}>
-      <BrowserRouter>
-        <AuthProvider>
-          <CartProvider>
-            <ToastProvider>
-              <div style={{ minHeight: '100vh', background: 'var(--bg)', position: 'relative' }}>
-                <div className="grid-bg" />
-                <ScrollToTop />
-                <AIChatbot />
-                <Routes>
+    <BrowserRouter>
+      <AuthProvider>
+        <CartProvider>
+          <ToastProvider>
+            <div style={{ minHeight: '100vh', background: 'var(--bg)', position: 'relative' }}>
+              <div className="grid-bg" />
+              <ScrollToTop />
+              <AIChatbot />
+              <Routes>
                 <Route path="/"          element={<PublicLayout><HomePage /></PublicLayout>} />
                 <Route path="/services"  element={<PublicLayout><ShopPage /></PublicLayout>} />
                 <Route path="/products"  element={<PublicLayout><ProductsPage /></PublicLayout>} />
@@ -98,6 +95,5 @@ export default function App() {
         </CartProvider>
       </AuthProvider>
     </BrowserRouter>
-    </I18nextProvider>
   );
 }
