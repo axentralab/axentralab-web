@@ -8,8 +8,10 @@ import { readingTime } from '../utils/readingTime';
 
 const CATS = ['All', 'Cybersecurity', 'AI Automation', 'Web Dev', 'SaaS Dev', 'DevOps', 'General'];
 const PER_PAGE = 9;
+const HERO_BG_IMAGE = process.env.REACT_APP_HERO_BG_IMAGE || '/images/hero-bg.png';
 
 export default function BlogPage() {
+  const { t } = useTranslation();
   const [posts, setPosts]     = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError]     = useState(false);
@@ -62,11 +64,16 @@ export default function BlogPage() {
     <div style={{ padding: '100px 5% 80px', minHeight: '100vh' }}>
 
       {/* Hero */}
-      <div style={{ textAlign: 'center', marginBottom: 48 }}>
-        <span style={{ display: 'inline-block', padding: '3px 12px', borderRadius: 999, border: '1px solid #06B6D440', background: '#06B6D412', color: '#06B6D4', fontSize: 11, fontFamily: "'Space Mono',monospace", letterSpacing: 1, textTransform: 'uppercase', fontWeight: 600 }}>Insights</span>
-        <h1 style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(28px,5vw,58px)', fontWeight: 900, color: '#fff', marginTop: 16, letterSpacing: -1.5 }}>Tech Blog</h1>
-        <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: 15, maxWidth: 420, margin: '12px auto 0' }}>Expert articles on cybersecurity, AI and modern engineering.</p>
-      </div>
+      <section style={{ position: 'relative', overflow: 'hidden', borderRadius: 20, marginBottom: 48, padding: '56px 20px', textAlign: 'center' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${HERO_BG_IMAGE})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(100deg, rgba(6,8,15,0.9) 0%, rgba(6,8,15,0.72) 48%, rgba(6,8,15,0.9) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
+        <div style={{ position: 'relative' }}>
+          <span style={{ display: 'inline-block', padding: '3px 12px', borderRadius: 999, border: '1px solid #06B6D440', background: '#06B6D412', color: '#06B6D4', fontSize: 11, fontFamily: "'Space Mono',monospace", letterSpacing: 1, textTransform: 'uppercase', fontWeight: 600 }}>Insights</span>
+          <h1 style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(28px,5vw,58px)', fontWeight: 900, color: '#fff', marginTop: 16, letterSpacing: -1.5 }}>Tech Blog</h1>
+          <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: 15, maxWidth: 420, margin: '12px auto 0' }}>Expert articles on cybersecurity, AI and modern engineering.</p>
+        </div>
+      </section>
 
       {/* Search */}
       <div style={{ maxWidth: 560, margin: '0 auto 32px', position: 'relative' }}>

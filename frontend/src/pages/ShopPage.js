@@ -1,28 +1,32 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import ReferralPromoAd from '../components/ui/ReferralPromoAd';
 
 // ─── Design tokens (mirrors site palette) ────────────────────────────────────
-const GREEN  = '#22C55E';
+const GREEN  = '#8B5CF6';
 const BLUE   = '#3B82F6';
 const PURPLE = '#A855F7';
 const AMBER  = '#F59E0B';
 const CYAN   = '#06B6D4';
+const HERO_BG_IMAGE = process.env.REACT_APP_HERO_BG_IMAGE || '/images/hero-bg.png';
 
 // ─── Service Packs ────────────────────────────────────────────────────────────
 const PACKS = [
+  // ── Web Development ─────────────────────────────────────────────────────────
   {
     id: 'startup',
     badge: 'Entry Point',
     label: 'Startup Pack',
     tagline: 'Perfect for new businesses & MVPs',
-    price: '৳20,000',
-    priceMax: '৳50,000',
+    price: '$160 / ৳20,000',
+    priceMax: '$500 / ৳50,000',
     delivery: '7–10 days',
     support: '1 month post-launch',
     pages: '1–3 responsive pages',
     tech: 'WordPress / HTML + CSS',
     color: GREEN,
     icon: '🚀',
+    category: 'webdev',
     features: [
       'Mobile-friendly responsive design',
       'Basic on-page SEO setup',
@@ -39,14 +43,15 @@ const PACKS = [
     badge: 'Most Popular',
     label: 'SME Pack',
     tagline: 'For growing businesses & brands',
-    price: '৳50,000',
-    priceMax: '৳1,50,000',
+    price: '$400 / ৳50,000',
+    priceMax: '$1,200 / ৳1,50,000',
     delivery: '10–20 days',
     support: '3 months post-launch',
     pages: '4–10 pages + blog',
     tech: 'WordPress + custom JS / Next.js',
     color: BLUE,
     icon: '⚡',
+    category: 'webdev',
     features: [
       'Custom design & UI/UX system',
       'Full on-page SEO optimization',
@@ -56,7 +61,7 @@ const PACKS = [
       'Basic analytics & tracking setup',
       'Advanced custom JS features',
     ],
-    addons: ['eCommerce +৳30,000', 'CRM integration +৳20,000', 'Maintenance contract'],
+    addons: ['eCommerce +$500', 'CRM integration +৳20,000', 'Maintenance contract'],
     popular: true,
   },
   {
@@ -64,7 +69,7 @@ const PACKS = [
     badge: 'Full Power',
     label: 'Enterprise Pack',
     tagline: 'Custom platforms, SaaS & dashboards',
-    price: '৳1,50,000',
+    price: '$1,500 / ৳1,50,000',
     priceMax: null,
     delivery: '20+ days',
     support: '6 months + optional contract',
@@ -72,6 +77,7 @@ const PACKS = [
     tech: 'React / Next.js + Node.js / WordPress',
     color: PURPLE,
     icon: '🛡️',
+    category: 'webdev',
     features: [
       'Custom eCommerce / POS system',
       'Admin dashboards & analytics',
@@ -84,6 +90,245 @@ const PACKS = [
     ],
     addons: ['Mobile app (React Native)', 'AI feature integrations', 'White-label solution'],
     popular: false,
+  },
+
+  // ── Cybersecurity ────────────────────────────────────────────────────────────
+  {
+    id: 'sec-audit',
+    badge: 'Core Security',
+    label: 'Security Audit',
+    tagline: 'Full scan, OWASP-based vulnerability report',
+    price: '$200 / ৳22,000',
+    priceMax: '$600 / ৳65,000',
+    delivery: '3–7 days',
+    support: 'Report + 2-week follow-up',
+    pages: 'Full site / app coverage',
+    tech: 'OWASP / Custom tools',
+    color: AMBER,
+    icon: '🔐',
+    category: 'security',
+    features: [
+      'Website security full scan',
+      'OWASP Top 10 vulnerability check',
+      'Detailed PDF report with fixes',
+      'Malware & backdoor detection',
+      'SSL / HTTPS configuration review',
+      'Admin panel security hardening tips',
+    ],
+    addons: ['Penetration testing +$300', 'WAF setup +৳15,000', 'Monthly monitoring +৳8,000/mo'],
+    popular: false,
+  },
+  {
+    id: 'sec-premium',
+    badge: '🔥 High Value',
+    label: 'Business Security Pack',
+    tagline: 'Full protection for live businesses',
+    price: '$500 / ৳55,000',
+    priceMax: '$1,500 / ৳1,50,000',
+    delivery: '7–14 days',
+    support: '3 months monitoring',
+    pages: 'Full infrastructure',
+    tech: 'WAF + Linux + Cloud',
+    color: AMBER,
+    icon: '🛡️',
+    category: 'security',
+    features: [
+      'Malware removal & full cleanup',
+      'Web Application Firewall (WAF) setup',
+      'Server security hardening (Linux/Cloud)',
+      'Penetration testing (Basic/Advanced)',
+      'API & SaaS security testing',
+      'Threat monitoring & alert system',
+      'Monthly security report',
+    ],
+    addons: ['24/7 monitoring +৳10,000/mo', 'SaaS security testing +$200', 'NDA included'],
+    popular: true,
+  },
+
+  // ── Automation ───────────────────────────────────────────────────────────────
+  {
+    id: 'automation',
+    badge: 'Hidden Gold 💎',
+    label: 'Automation Pack',
+    tagline: 'Save time, increase efficiency',
+    price: '$300 / ৳33,000',
+    priceMax: '$2,000 / ৳2,00,000',
+    delivery: '5–15 days',
+    support: '2 months',
+    pages: 'Process / workflow scope',
+    tech: 'Zapier / Make / Node.js',
+    color: CYAN,
+    icon: '⚙️',
+    category: 'automation',
+    features: [
+      'Business process automation',
+      'CRM setup & integration',
+      'API integration (3rd party)',
+      'Chatbot development',
+      'Workflow automation (Zapier, Make)',
+      'Custom reporting & alerts',
+    ],
+    addons: ['AI chatbot upgrade +$200', 'Custom CRM +৳25,000', 'Ongoing automation support'],
+    popular: false,
+  },
+
+  // ── White-Label ──────────────────────────────────────────────────────────────
+  {
+    id: 'whitelabel',
+    badge: 'Best for Agencies 🔥',
+    label: 'White-Label Partner',
+    tagline: 'Scale your agency without hiring',
+    price: '$500 / mo',
+    priceMax: '$5,000 / mo',
+    delivery: 'Ongoing retainer',
+    support: 'Dedicated dev/security expert',
+    pages: 'Unlimited projects',
+    tech: 'Full stack + Security',
+    color: PURPLE,
+    icon: '💼',
+    category: 'whitelabel',
+    features: [
+      'Full web dev outsourcing',
+      'Cybersecurity support for agencies',
+      'Emergency bug fix team (48h SLA)',
+      'Dedicated developer on demand',
+      'Dedicated security expert on demand',
+      'NDA & white-label delivery',
+      'BDT & USD invoicing',
+    ],
+    addons: ['Priority SLA +$200/mo', 'Extra dev seat +$300/mo', 'Monthly strategy call'],
+    popular: false,
+  },
+
+  // ── Retainer Plans ───────────────────────────────────────────────────────────
+  {
+    id: 'retainer-web',
+    badge: 'Recurring 💸',
+    label: 'Website Maintenance',
+    tagline: 'Keep your site fast, safe & updated',
+    price: '$50 / mo',
+    priceMax: '$300 / mo',
+    delivery: 'Ongoing',
+    support: 'Monthly updates + backups',
+    pages: '1 website',
+    tech: 'WordPress / Custom',
+    color: GREEN,
+    icon: '🔧',
+    category: 'retainer',
+    features: [
+      'Plugin & theme updates',
+      'Daily/weekly backups',
+      'Bug fixes & small edits',
+      'Uptime monitoring',
+      'Performance checks',
+      'Monthly status report',
+    ],
+    addons: ['SEO retainer +৳8,000/mo', 'Security monitoring +$100/mo', 'Priority support'],
+    popular: false,
+  },
+  {
+    id: 'retainer-sec',
+    badge: 'Recurring 💸',
+    label: 'Security Monitoring',
+    tagline: '24/7 threat detection & response',
+    price: '$100 / mo',
+    priceMax: '$500 / mo',
+    delivery: 'Ongoing',
+    support: '24/7 threat alerts',
+    pages: 'Full infrastructure',
+    tech: 'WAF + SIEM tools',
+    color: AMBER,
+    icon: '👁️',
+    category: 'retainer',
+    features: [
+      '24/7 automated monitoring',
+      'Real-time threat alerts',
+      'Monthly security report',
+      'Firewall rule updates',
+      'Incident response support',
+      'Vulnerability patch notifications',
+    ],
+    addons: ['Manual pen test +$200/qtr', 'Compliance reporting +$100/mo', 'SLA guarantee'],
+    popular: false,
+  },
+
+  // ── Combo High-Ticket ────────────────────────────────────────────────────────
+  {
+    id: 'combo-startup',
+    badge: '🥇 Combo Deal',
+    label: 'Startup Growth Package',
+    tagline: 'Website + Security + Speed — all-in-one',
+    price: '$500 / ৳55,000',
+    priceMax: '$1,500 / ৳1,50,000',
+    delivery: '10–18 days',
+    support: '2 months',
+    pages: '1–5 pages',
+    tech: 'WordPress / Next.js',
+    color: GREEN,
+    icon: '📦',
+    category: 'combo',
+    features: [
+      'Business website build (3–5 pages)',
+      'Basic security audit & hardening',
+      'Website speed optimization',
+      'On-page SEO setup',
+      'Contact form & social integration',
+      'Post-launch bug fix support',
+    ],
+    addons: ['Logo design +৳8,000', 'Maintenance plan +$50/mo', 'Domain setup +৳2,000'],
+    popular: false,
+  },
+  {
+    id: 'combo-biz',
+    badge: '🥈 Combo Deal',
+    label: 'Business Protection Pack',
+    tagline: 'Full audit + cleanup + firewall',
+    price: '$300 / ৳33,000',
+    priceMax: '$1,200 / ৳1,20,000',
+    delivery: '5–12 days',
+    support: '1 month',
+    pages: 'Full site',
+    tech: 'WAF + OWASP',
+    color: BLUE,
+    icon: '🔒',
+    category: 'combo',
+    features: [
+      'Full security audit (OWASP)',
+      'Malware removal & cleanup',
+      'Web Application Firewall setup',
+      'SSL & server config hardening',
+      'Vulnerability fix recommendations',
+      'Post-fix verification scan',
+    ],
+    addons: ['Penetration test +$300', 'Monthly monitoring +$100/mo', 'Compliance report'],
+    popular: false,
+  },
+  {
+    id: 'combo-premium',
+    badge: '🥇🥇 All-in-One',
+    label: 'Premium All-in-One',
+    tagline: 'Website + Security + Maintenance — total control',
+    price: '$1,000 / ৳1,00,000',
+    priceMax: null,
+    delivery: 'Custom timeline',
+    support: '6 months + contract option',
+    pages: 'Unlimited',
+    tech: 'React / Next.js + WAF + Node',
+    color: PURPLE,
+    icon: '🏆',
+    category: 'combo',
+    features: [
+      'Full custom website / web app build',
+      'Complete security audit & hardening',
+      'WAF + 24/7 security monitoring',
+      'Monthly maintenance & updates',
+      'SEO + performance optimization',
+      'Payment gateway & API integrations',
+      'Admin dashboard & analytics',
+      'Priority support & dedicated team',
+    ],
+    addons: ['Mobile app (React Native)', 'AI feature integrations', 'White-label delivery'],
+    popular: true,
   },
 ];
 
@@ -137,16 +382,53 @@ const CASES = [
     icon: '📈',
     pack: 'Enterprise Pack',
   },
+  {
+    name: 'PaySecure BD',
+    client: 'FinTech Startup · Dhaka',
+    challenge: 'Live payment platform with critical OWASP vulnerabilities — SQL injection, broken auth, exposed API keys.',
+    solution: 'Ran full penetration test, patched all critical CVEs, deployed WAF rules, and set up 24/7 threat monitoring.',
+    metrics: [
+      { label: 'Vulnerabilities fixed', before: '23', after: '0 critical', icon: '🔐' },
+      { label: 'Audit compliance', delta: '✅ Passed', icon: '📋' },
+      { label: 'Security score', before: '41', after: '96', icon: '🛡️' },
+    ],
+    stack: ['OWASP ZAP', 'ModSecurity WAF', 'Fail2Ban', 'Linux Hardening', 'SSL/TLS'],
+    demo: 'paysecurebd.com',
+    color: AMBER,
+    icon: '🔐',
+    pack: 'Business Security Pack',
+  },
+  {
+    name: 'RetailBot Auto',
+    client: 'E-commerce Brand · Remote',
+    challenge: 'Manual order processing, inventory sync, and customer follow-up costing 20+ hrs/week.',
+    solution: 'Built end-to-end automation using Zapier + Make — auto-invoicing, inventory alerts, CRM sync, and customer email flows.',
+    metrics: [
+      { label: 'Manual hours saved', delta: '↓ 85%', icon: '⏱️' },
+      { label: 'Order errors', delta: '↓ 96%', icon: '📦' },
+      { label: 'Revenue tracked/mo', delta: '↑ 3×', icon: '💰' },
+    ],
+    stack: ['Zapier', 'Make (Integromat)', 'WooCommerce API', 'Notion CRM', 'Mailchimp'],
+    demo: 'retailbot.vercel.app',
+    color: CYAN,
+    icon: '⚙️',
+    pack: 'Automation Pack',
+  },
 ];
 
 // ─── Portfolio items ──────────────────────────────────────────────────────────
 const PORTFOLIO = [
-  { name: 'AgroTech BD', cat: 'Startup', icon: '🌾', color: GREEN,  tech: 'WordPress', desc: 'Agricultural marketplace for rural Bangladesh farmers.' },
-  { name: 'MediConnect',  cat: 'SME',     icon: '🏥', color: BLUE,   tech: 'Next.js',   desc: 'Doctor appointment booking platform with telemedicine.' },
-  { name: 'EduFlow LMS',  cat: 'Enterprise', icon: '📚', color: PURPLE, tech: 'React + Node.js', desc: 'Full learning management system with live classes.' },
-  { name: 'ShopNow BD',   cat: 'SME',     icon: '🛍️', color: AMBER,  tech: 'WooCommerce', desc: 'Multi-vendor eCommerce for Dhaka boutiques.' },
-  { name: 'TradeBot AI',  cat: 'Enterprise', icon: '🤖', color: CYAN,   tech: 'React + Python', desc: 'Automated crypto trading bot with analytics dashboard.' },
-  { name: 'BeautyHub',    cat: 'Startup', icon: '💄', color: '#EC4899', tech: 'WordPress', desc: 'Booking & portfolio site for a beauty salon chain.' },
+  { name: 'Travel Agency',     cat: 'Startup',    icon: '✈️', color: CYAN,      tech: 'MERN',            desc: 'Tour booking site with custom itinerary builder.' },
+  { name: 'AgroTech BD',       cat: 'Startup',    icon: '🌾', color: GREEN,     tech: 'WordPress',       desc: 'Agricultural marketplace for rural Bangladesh farmers.' },
+  { name: 'MediConnect',       cat: 'SME',        icon: '🏥', color: BLUE,      tech: 'Next.js',         desc: 'Doctor appointment booking platform with telemedicine.' },
+  { name: 'EduFlow LMS',       cat: 'Enterprise', icon: '📚', color: PURPLE,    tech: 'React + Node.js', desc: 'Full learning management system with live classes.' },
+  { name: 'ShopNow BD',        cat: 'SME',        icon: '🛍️', color: AMBER,     tech: 'WooCommerce',     desc: 'Multi-vendor eCommerce for Dhaka boutiques.' },
+  { name: 'TradeBot AI',       cat: 'Enterprise', icon: '🤖', color: CYAN,      tech: 'React + Python',  desc: 'Automated crypto trading bot with analytics dashboard.' },
+  { name: 'BeautyHub',         cat: 'Startup',    icon: '💄', color: '#EC4899', tech: 'WordPress',       desc: 'Booking & portfolio site for a beauty salon chain.' },
+  { name: 'SecureBank BD',     cat: 'Security',   icon: '🔐', color: AMBER,     tech: 'WAF + OWASP',     desc: 'Full security audit & firewall for a fintech startup.' },
+  { name: 'LegalShield Audit', cat: 'Security',   icon: '🛡️', color: AMBER,     tech: 'Pen Testing',     desc: 'Penetration testing & hardening for a law firm portal.' },
+  { name: 'RetailBot CRM',     cat: 'Automation', icon: '⚙️', color: CYAN,      tech: 'Zapier + Make',   desc: 'End-to-end order & inventory automation for e-commerce.' },
+  { name: 'HRFlow Auto',       cat: 'Automation', icon: '🔄', color: CYAN,      tech: 'Node.js + API',   desc: 'Automated onboarding workflow for an HR SaaS company.' },
 ];
 
 // ─── Small hooks / utils ──────────────────────────────────────────────────────
@@ -385,15 +667,31 @@ function CaseCard({ c, idx }) {
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
 export default function ServicesPage() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('pricing');
   const [portfolioCat, setPortfolioCat] = useState('All');
+  const [packCat, setPackCat] = useState('all');
   const [heroRef, heroVisible] = useInView(0.05);
 
   const filteredPortfolio = portfolioCat === 'All'
     ? PORTFOLIO
     : PORTFOLIO.filter(p => p.cat === portfolioCat);
 
-  const CATS_PORT = ['All', 'Startup', 'SME', 'Enterprise'];
+  const filteredPacks = packCat === 'all'
+    ? PACKS
+    : PACKS.filter(p => p.category === packCat);
+
+  const CATS_PORT = ['All', 'Startup', 'SME', 'Enterprise', 'Security', 'Automation'];
+
+  const PACK_CATS = [
+    { id: 'all',        label: '🌐 All Services' },
+    { id: 'webdev',     label: '💻 Web Dev' },
+    { id: 'security',   label: '🔐 Cybersecurity' },
+    { id: 'automation', label: '⚙️ Automation' },
+    { id: 'whitelabel', label: '💼 White-Label' },
+    { id: 'retainer',   label: '🔁 Retainer' },
+    { id: 'combo',      label: '📦 Combo Deals' },
+  ];
 
   return (
     <>
@@ -444,28 +742,34 @@ export default function ServicesPage() {
         <div style={{ position: 'relative', zIndex: 1 }}>
 
           {/* ── HERO ────────────────────────────────────────────────────────── */}
-          <div ref={heroRef} style={{
-            textAlign: 'center', marginBottom: 56,
-            opacity: heroVisible ? 1 : 0,
-            transform: heroVisible ? 'none' : 'translateY(24px)',
-            transition: 'opacity 0.6s, transform 0.6s',
-          }}>
-            <SectionLabel color={GREEN}>Services & Pricing</SectionLabel>
-            <h1 style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(32px,6vw,64px)', fontWeight: 900, color: '#fff', marginTop: 18, letterSpacing: -2, lineHeight: 1.05, marginBottom: 16 }}>
-              Transparent pricing.<br />
-              <span style={{ color: GREEN }}>Real results.</span>
-            </h1>
-            <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, maxWidth: 480, margin: '0 auto 28px', lineHeight: 1.75 }}>
-              From startup landing pages to full-stack SaaS platforms — fixed-price packages with no hidden fees. Based in Dhaka, serving clients worldwide.
-            </p>
+          <section style={{ position: 'relative', overflow: 'hidden', borderRadius: 20, marginBottom: 56, padding: '56px 20px' }}>
+            <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${HERO_BG_IMAGE})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(100deg, rgba(6,8,15,0.9) 0%, rgba(6,8,15,0.72) 48%, rgba(6,8,15,0.9) 100%)' }} />
+            <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
+            <div ref={heroRef} style={{
+              textAlign: 'center',
+              position: 'relative',
+              opacity: heroVisible ? 1 : 0,
+              transform: heroVisible ? 'none' : 'translateY(24px)',
+              transition: 'opacity 0.6s, transform 0.6s',
+            }}>
+              <SectionLabel color={GREEN}>Services & Pricing</SectionLabel>
+              <h1 style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(32px,6vw,64px)', fontWeight: 900, color: '#fff', marginTop: 18, letterSpacing: -2, lineHeight: 1.05, marginBottom: 16 }}>
+                Transparent pricing.<br />
+                <span style={{ color: GREEN }}>Real results.</span>
+              </h1>
+              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, maxWidth: 480, margin: '0 auto 28px', lineHeight: 1.75 }}>
+                From startup landing pages to full-stack SaaS platforms — fixed-price packages with no hidden fees. Based in Dhaka, serving clients worldwide.
+              </p>
 
-            {/* trust chips */}
-            <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
-              {['✓ Free consultation', '✓ Fixed-price quotes', '✓ NDA on request', '✓ BDT & USD accepted'].map((t, i) => (
-                <span key={i} style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', fontFamily: "'Space Mono',monospace", padding: '4px 12px', borderRadius: 999, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>{t}</span>
-              ))}
+              {/* trust chips */}
+              <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
+                {['✓ Free consultation', '✓ Fixed-price quotes', '✓ NDA on request', '✓ BDT & USD accepted'].map((t, i) => (
+                  <span key={i} style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', fontFamily: "'Space Mono',monospace", padding: '4px 12px', borderRadius: 999, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>{t}</span>
+                ))}
+              </div>
             </div>
-          </div>
+          </section>
 
           {/* ── TAB NAV ─────────────────────────────────────────────────────── */}
           <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginBottom: 52 }}>
@@ -484,8 +788,47 @@ export default function ServicesPage() {
           {/* ── PRICING TAB ─────────────────────────────────────────────────── */}
           {activeTab === 'pricing' && (
             <>
+              {/* ── Category Filter ── */}
+              <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 36 }}>
+                {PACK_CATS.map(cat => {
+                  const active = packCat === cat.id;
+                  return (
+                    <button key={cat.id} onClick={() => setPackCat(cat.id)}
+                      style={{ padding: '7px 16px', borderRadius: 999, fontSize: 12, fontWeight: 600, fontFamily: "'Space Mono',monospace", cursor: 'pointer', transition: 'all 0.15s', background: active ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.03)', border: active ? '1px solid rgba(255,255,255,0.22)' : '1px solid rgba(255,255,255,0.07)', color: active ? '#fff' : 'rgba(255,255,255,0.38)' }}>
+                      {cat.label}
+                    </button>
+                  );
+                })}
+              </div>
+
               <div className="packs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 22, maxWidth: 1140, margin: '0 auto 48px' }}>
-                {PACKS.map((pack, i) => <PackCard key={pack.id} pack={pack} idx={i} />)}
+                {filteredPacks.map((pack, i) => <PackCard key={pack.id} pack={pack} idx={i} />)}
+              </div>
+
+              {/* entry-level / hook offers */}
+              <div style={{ maxWidth: 1140, margin: '32px auto 0' }}>
+                <div style={{ textAlign: 'center', marginBottom: 24 }}>
+                  <SectionLabel color={GREEN}>⚡ Entry-Level Offers</SectionLabel>
+                  <h3 style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(18px,2.5vw,26px)', fontWeight: 900, color: '#fff', marginTop: 12, letterSpacing: -0.5 }}>Client magnets — easy entry, easy trust</h3>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(280px,1fr))', gap: 14 }}>
+                  {[
+                    { icon: '⚡', label: 'Website Speed Fix',    price: '$50 – $150',    desc: 'Fast turnaround. Big impact.',      color: GREEN },
+                    { icon: '🔍', label: 'Quick Security Scan',  price: 'Free / Low cost', desc: 'Identify risks before they hit.',  color: AMBER },
+                    { icon: '🐛', label: 'Bug Fix / Small Task', price: 'From $30',       desc: 'Quick & clean. No hassle.',         color: BLUE },
+                  ].map((a, i) => (
+                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '18px 20px', background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, transition: 'border-color 0.2s' }}
+                      onMouseEnter={e => e.currentTarget.style.borderColor = `${a.color}40`}
+                      onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'}>
+                      <span style={{ fontSize: 28 }}>{a.icon}</span>
+                      <div>
+                        <div style={{ fontFamily: "'Sora',sans-serif", fontSize: 14, fontWeight: 800, color: '#fff' }}>{a.label}</div>
+                        <div style={{ fontFamily: "'Space Mono',monospace", fontSize: 11, color: a.color, marginTop: 2 }}>{a.price}</div>
+                        <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', marginTop: 3 }}>{a.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* comparison callout */}
@@ -507,14 +850,22 @@ export default function ServicesPage() {
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(230px,1fr))', gap: 14 }}>
                   {[
-                    { icon: '📄', label: 'Extra Pages', price: '৳5,000 / page', color: GREEN },
-                    { icon: '🎨', label: 'Logo Design', price: '৳8,000', color: CYAN },
-                    { icon: '🛒', label: 'eCommerce Module', price: '৳30,000+', color: BLUE },
-                    { icon: '🔗', label: 'API Integration', price: '৳15,000+', color: PURPLE },
-                    { icon: '🛡️', label: 'Security Hardening', price: '৳12,000', color: AMBER },
-                    { icon: '🔧', label: 'Monthly Maintenance', price: '৳5,000 / mo', color: GREEN },
-                    { icon: '📈', label: 'SEO Retainer', price: '৳8,000 / mo', color: BLUE },
-                    { icon: '📱', label: 'React Native App', price: 'Custom quote', color: PURPLE },
+                    { icon: '📄', label: 'Extra Pages',          price: '৳5,000 / page',   color: GREEN },
+                    { icon: '🎨', label: 'Logo Design',           price: '৳8,000',           color: CYAN },
+                    { icon: '🛒', label: 'eCommerce Module',      price: '৳30,000+',         color: BLUE },
+                    { icon: '🔗', label: 'API Integration',       price: '৳15,000+',         color: PURPLE },
+                    { icon: '🛡️', label: 'Security Hardening',    price: '৳12,000',          color: AMBER },
+                    { icon: '🔧', label: 'Monthly Maintenance',   price: '৳5,000 / mo',      color: GREEN },
+                    { icon: '📈', label: 'SEO Retainer',          price: '৳8,000 / mo',      color: BLUE },
+                    { icon: '📱', label: 'React Native App',      price: 'Custom quote',     color: PURPLE },
+                    { icon: '🔐', label: 'Penetration Testing',   price: '$300 / ৳33,000',   color: AMBER },
+                    { icon: '👁️', label: '24/7 Monitoring',       price: '$100 / mo',        color: AMBER },
+                    { icon: '🤖', label: 'AI Chatbot',            price: '$200 / ৳22,000',   color: CYAN },
+                    { icon: '🔄', label: 'Workflow Automation',   price: '৳20,000+',         color: CYAN },
+                    { icon: '💼', label: 'White-Label Delivery',  price: 'Custom quote',     color: PURPLE },
+                    { icon: '📊', label: 'Analytics Dashboard',   price: '৳18,000+',         color: BLUE },
+                    { icon: '🌐', label: 'Domain + Hosting Setup','price': '৳2,000',         color: GREEN },
+                    { icon: '📋', label: 'NDA Agreement',         price: 'Free',             color: '#6B7280' },
                   ].map((a, i) => (
                     <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '14px 18px', background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, transition: 'border-color 0.2s' }}
                       onMouseEnter={e => e.currentTarget.style.borderColor = `${a.color}35`}
@@ -588,7 +939,7 @@ export default function ServicesPage() {
               </div>
 
               {/* CTA callout */}
-              <div style={{ marginTop: 48, textAlign: 'center', padding: '36px 28px', background: `linear-gradient(135deg,rgba(34,197,94,0.05),rgba(59,130,246,0.05))`, border: '1px solid rgba(255,255,255,0.07)', borderRadius: 20 }}>
+              <div style={{ marginTop: 48, textAlign: 'center', padding: '36px 28px', background: `linear-gradient(135deg,rgba(139,92,246,0.05),rgba(59,130,246,0.05))`, border: '1px solid rgba(255,255,255,0.07)', borderRadius: 20 }}>
                 <div style={{ fontSize: 36, marginBottom: 14 }}>📋</div>
                 <h3 style={{ fontFamily: "'Sora',sans-serif", fontWeight: 900, fontSize: 22, color: '#fff', letterSpacing: -0.5, marginBottom: 10 }}>Want a case study for your project?</h3>
                 <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: 14, maxWidth: 400, margin: '0 auto 24px', lineHeight: 1.7 }}>We document results for every enterprise project — you'll have real proof of ROI to share with stakeholders.</p>
@@ -599,6 +950,10 @@ export default function ServicesPage() {
             </div>
           )}
 
+          {/* ── REFERRAL PROMO ──────────────────────────────────────────────── */}
+          <div style={{ maxWidth: 1100, margin: '80px auto 0', padding: '0 20px' }}>
+            <ReferralPromoAd variant="vip" style={{ marginBottom: 40 }} />
+          </div>
         </div>
       </div>
     </>

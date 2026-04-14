@@ -55,6 +55,7 @@ function renderBody(text, accentColor) {
 }
 
 export default function BlogPostPage() {
+  const { t } = useTranslation();
   const { id }                = useParams();
   const navigate              = useNavigate();
   const toast                 = useToast();
@@ -265,7 +266,7 @@ export default function BlogPostPage() {
                 in
               </a>
               <button onClick={handleCopyLink}
-                style={{ height: 36, padding: '0 14px', borderRadius: 999, background: copied ? 'rgba(34,197,94,0.12)' : 'rgba(255,255,255,0.06)', border: `1px solid ${copied ? 'rgba(34,197,94,0.3)' : 'rgba(255,255,255,0.1)'}`, color: copied ? '#22C55E' : 'rgba(255,255,255,0.5)', fontSize: 11, fontFamily: "'Space Mono',monospace", cursor: 'pointer', transition: 'all 0.2s', whiteSpace: 'nowrap' }}>
+                style={{ height: 36, padding: '0 14px', borderRadius: 999, background: copied ? 'rgba(139,92,246,0.12)' : 'rgba(255,255,255,0.06)', border: `1px solid ${copied ? 'rgba(139,92,246,0.3)' : 'rgba(255,255,255,0.1)'}`, color: copied ? '#8B5CF6' : 'rgba(255,255,255,0.5)', fontSize: 11, fontFamily: "'Space Mono',monospace", cursor: 'pointer', transition: 'all 0.2s', whiteSpace: 'nowrap' }}>
                 {copied ? '✓ Copied' : '🔗 Copy link'}
               </button>
             </div>

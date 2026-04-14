@@ -5,6 +5,7 @@ const ACCENT   = '#8B5CF6';
 const PRIMARY2 = '#A78BFA';
 
 export default function OrderSuccessPage() {
+  const { t } = useTranslation();
   return (
     <>
       <style>{`
@@ -70,26 +71,23 @@ export default function OrderSuccessPage() {
         </div>
 
         <h1 className="anim-1" style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(26px,4vw,44px)', fontWeight: 900, color: '#fff', letterSpacing: -1, marginBottom: 14, lineHeight: 1.1 }}>
-          Payment{' '}
-          <span style={{ background: `linear-gradient(135deg,${PRIMARY},${ACCENT})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-            Successful!
-          </span>
+          {t('order_success.title')}
         </h1>
 
         <p className="anim-2" style={{ color: 'rgba(255,255,255,0.45)', fontSize: 16, maxWidth: 420, marginBottom: 12, lineHeight: 1.75 }}>
-          Your order has been confirmed.
+          {t('order_success.confirmation_message')}
         </p>
 
         <p className="anim-2" style={{ color: 'rgba(255,255,255,0.3)', fontSize: 14, maxWidth: 380, marginBottom: 40, lineHeight: 1.7 }}>
-          Our team will reach out within 24 hours to kick off your project. Check your email for the order summary.
+          {t('order_success.details_message')}
         </p>
 
         {/* Steps */}
         <div className="anim-3" style={{ display: 'flex', gap: 20, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 40, maxWidth: 600 }}>
           {[
-            { icon: '📧', label: 'Confirmation email sent' },
-            { icon: '📋', label: 'Scope call within 24h' },
-            { icon: '🚀', label: 'Build starts immediately' },
+            { icon: '📧', label: t('order_success.steps.confirmation_email') },
+            { icon: '📋', label: t('order_success.steps.scope_call') },
+            { icon: '🚀', label: t('order_success.steps.build_starts') },
           ].map((step, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', background: `${PRIMARY}08`, border: `1px solid ${PRIMARY}20`, borderRadius: 12 }}>
               <span style={{ fontSize: 16 }}>{step.icon}</span>
@@ -99,8 +97,8 @@ export default function OrderSuccessPage() {
         </div>
 
         <div className="anim-4" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link to="/dashboard/orders" className="success-btn-primary">View My Orders →</Link>
-          <Link to="/services" className="success-btn-outline">Browse More Services</Link>
+          <Link to="/dashboard/orders" className="success-btn-primary">{t('order_success.orders_button')}</Link>
+          <Link to="/services" className="success-btn-outline">{t('order_success.browse_button')}</Link>
         </div>
       </div>
     </>

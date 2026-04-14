@@ -5,6 +5,7 @@ const ACCENT   = '#8B5CF6';
 const PRIMARY2 = '#A78BFA';
 
 export default function NotFoundPage() {
+  const { t } = useTranslation();
   return (
     <>
       <style>{`
@@ -44,17 +45,17 @@ export default function NotFoundPage() {
         <div style={{ position: 'fixed', top: '30%', left: '50%', transform: 'translateX(-50%)', width: 500, height: 400, borderRadius: '50%', background: `radial-gradient(circle,${PRIMARY}12,transparent 70%)`, pointerEvents: 'none', animation: 'glowPulse 4s ease-in-out infinite' }} />
 
         <div className="n404-num" style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(80px,15vw,140px)', fontWeight: 900, background: `linear-gradient(135deg,${PRIMARY}28,${ACCENT}18)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1, letterSpacing: -4, marginBottom: 8, filter: `drop-shadow(0 0 30px ${PRIMARY}30)` }}>
-          404
+          {t('not_found.number')}
         </div>
 
-        <h1 className="n404-h1" style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(20px,3vw,28px)', fontWeight: 800, color: '#fff', marginBottom: 12 }}>Page Not Found</h1>
+        <h1 className="n404-h1" style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(20px,3vw,28px)', fontWeight: 800, color: '#fff', marginBottom: 12 }}>{t('not_found.title')}</h1>
         <p className="n404-p" style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, marginBottom: 36, maxWidth: 340, lineHeight: 1.7 }}>
-          The page you're looking for doesn't exist or has been moved.
+          {t('not_found.description')}
         </p>
 
         <div className="n404-btns" style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
-          <Link to="/" className="n404-btn-primary">Go Home →</Link>
-          <Link to="/contact" className="n404-btn-outline">Contact Us</Link>
+          <Link to="/" className="n404-btn-primary">{t('not_found.home_button')}</Link>
+          <Link to="/contact" className="n404-btn-outline">{t('not_found.contact_button')}</Link>
         </div>
       </div>
     </>
