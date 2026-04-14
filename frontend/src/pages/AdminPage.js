@@ -50,7 +50,7 @@ const OverviewTab = memo(function OverviewTab({ stats, leads, loading }) {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 16, marginBottom: 36 }}>
         {[
           { icon: '👥', label: 'Total Users',   value: stats.totalUsers,   color: '#3B82F6' },
-          { icon: '📦', label: 'Total Orders',  value: stats.totalOrders,  color: '#8B5CF6' },
+          { icon: '📦', label: 'Total Orders',  value: stats.totalOrders,  color: '#22C55E' },
           { icon: '💰', label: 'Total Revenue', value: `$${(stats.totalRevenue || 0).toLocaleString()}`, color: '#F59E0B' },
           { icon: '📬', label: 'Leads',         value: leads.length,       color: '#8B5CF6' },
         ].map(s => (
@@ -108,7 +108,7 @@ const LeadsTab = memo(function LeadsTab() {
           { label: 'Hot (80+)', color: '#EF4444', count: leads.filter(l => (l.leadScore?.score || 0) >= 80).length },
           { label: 'Warm (60+)', color: '#F59E0B', count: leads.filter(l => { const s = l.leadScore?.score || 0; return s >= 60 && s < 80; }).length },
           { label: 'Cool (40+)', color: '#3B82F6', count: leads.filter(l => { const s = l.leadScore?.score || 0; return s >= 40 && s < 60; }).length },
-          { label: 'Cold (<40)', color: '#8B5CF6', count: leads.filter(l => (l.leadScore?.score || 0) < 40).length },
+          { label: 'Cold (<40)', color: '#22C55E', count: leads.filter(l => (l.leadScore?.score || 0) < 40).length },
         ].map(s => (
           <div key={s.label} style={{ background: 'rgba(255,255,255,0.03)', border: `1px solid ${s.color}20`, borderRadius: 12, padding: '14px 16px' }}>
             <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginBottom: 4 }}>{s.label}</div>
@@ -123,7 +123,7 @@ const LeadsTab = memo(function LeadsTab() {
         </div>
         {leads.map((lead, i) => {
           const score = lead.leadScore?.score || 0;
-          const scoreColor = score >= 80 ? '#EF4444' : score >= 60 ? '#F59E0B' : score >= 40 ? '#3B82F6' : '#8B5CF6';
+          const scoreColor = score >= 80 ? '#EF4444' : score >= 60 ? '#F59E0B' : score >= 40 ? '#3B82F6' : '#22C55E';
           return (
             <div key={lead._id} style={{ padding: '16px 24px', borderBottom: i < leads.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none', display: 'grid', gridTemplateColumns: '1.5fr 80px 1fr 100px 100px 120px', gap: 12, alignItems: 'center' }}>
               <div><div style={{ fontWeight: 600, fontSize: 13, color: '#fff' }}>{lead.name}</div><div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)' }}>{lead.email}</div></div>
@@ -158,7 +158,7 @@ const LeadsTab = memo(function LeadsTab() {
                   } catch (e) {
                     toast.error(apiErrorMessage(e, 'Failed to send proposal'));
                   }
-                }} style={{ padding: '5px 10px', borderRadius: 6, background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.2)', color: '#8B5CF6', fontSize: 10, fontWeight: 600, cursor: 'pointer' }}>Propose</button>
+                }} style={{ padding: '5px 10px', borderRadius: 6, background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.2)', color: '#22C55E', fontSize: 10, fontWeight: 600, cursor: 'pointer' }}>Propose</button>
 
                 <button onClick={async () => {
                   try {
@@ -222,10 +222,10 @@ const OrdersTab = memo(function OrdersTab() {
       <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 14, overflow: 'hidden' }}>
         {orders.map((order, i) => (
           <div key={order._id} style={{ padding: '16px 24px', borderBottom: '1px solid rgba(255,255,255,0.04)', display: 'grid', gridTemplateColumns: '120px 1fr 1fr 100px 140px', gap: 12, alignItems: 'center' }}>
-            <span style={{ fontFamily: "'Space Mono',monospace", fontSize: 11, color: '#8B5CF6' }}>{order.orderNumber}</span>
+            <span style={{ fontFamily: "'Space Mono',monospace", fontSize: 11, color: '#22C55E' }}>{order.orderNumber}</span>
             <div><div style={{ fontWeight: 600, fontSize: 13, color: '#fff' }}>{order.user?.name}</div><div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)' }}>{order.user?.email}</div></div>
             <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{order.items?.map(i => i.serviceTitle).join(', ')}</div>
-            <div style={{ fontFamily: "'Sora',sans-serif", fontWeight: 800, color: '#8B5CF6', fontSize: 15 }}>${order.total?.toLocaleString()}</div>
+            <div style={{ fontFamily: "'Sora',sans-serif", fontWeight: 800, color: '#22C55E', fontSize: 15 }}>${order.total?.toLocaleString()}</div>
 
             {/* FIX: async onChange with try/catch */}
             <select value={order.status} onChange={async e => {
@@ -273,12 +273,12 @@ const UsersTab = memo(function UsersTab() {
         {users.map(u => (
           <div key={u._id} style={{ padding: '16px 24px', borderBottom: '1px solid rgba(255,255,255,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg,#8B5CF6,#3B82F6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Sora',sans-serif", fontWeight: 800, fontSize: 14, color: '#fff', flexShrink: 0 }}>{u.name?.[0]}</div>
+              <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg,#22C55E,#3B82F6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Sora',sans-serif", fontWeight: 800, fontSize: 14, color: '#fff', flexShrink: 0 }}>{u.name?.[0]}</div>
               <div><div style={{ fontWeight: 600, fontSize: 14, color: '#fff' }}>{u.name}</div><div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>{u.email}</div></div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <span style={{ fontSize: 11, padding: '2px 10px', borderRadius: 999, background: u.role === 'admin' ? 'rgba(239,68,68,0.1)' : 'rgba(139,92,246,0.1)', border: u.role === 'admin' ? '1px solid rgba(239,68,68,0.2)' : '1px solid rgba(139,92,246,0.2)', color: u.role === 'admin' ? '#EF4444' : '#8B5CF6', fontFamily: "'Space Mono',monospace" }}>{u.role.toUpperCase()}</span>
-              <span style={{ fontSize: 11, padding: '2px 10px', borderRadius: 999, background: u.isActive ? 'rgba(139,92,246,0.08)' : 'rgba(239,68,68,0.08)', color: u.isActive ? '#8B5CF6' : '#EF4444', fontFamily: "'Space Mono',monospace" }}>{u.isActive ? 'ACTIVE' : 'SUSPENDED'}</span>
+              <span style={{ fontSize: 11, padding: '2px 10px', borderRadius: 999, background: u.role === 'admin' ? 'rgba(239,68,68,0.1)' : 'rgba(34,197,94,0.1)', border: u.role === 'admin' ? '1px solid rgba(239,68,68,0.2)' : '1px solid rgba(34,197,94,0.2)', color: u.role === 'admin' ? '#EF4444' : '#22C55E', fontFamily: "'Space Mono',monospace" }}>{u.role.toUpperCase()}</span>
+              <span style={{ fontSize: 11, padding: '2px 10px', borderRadius: 999, background: u.isActive ? 'rgba(34,197,94,0.08)' : 'rgba(239,68,68,0.08)', color: u.isActive ? '#22C55E' : '#EF4444', fontFamily: "'Space Mono',monospace" }}>{u.isActive ? 'ACTIVE' : 'SUSPENDED'}</span>
 
               {/* FIX: toggle button with try/catch */}
               <button onClick={async () => {
@@ -302,7 +302,6 @@ const UsersTab = memo(function UsersTab() {
 
 // ── Main AdminPage ─────────────────────────────────────────────────────────────
 export default function AdminPage() {
-  const { t } = useTranslation();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [stats, setStats]   = useState({ totalUsers: 0, totalOrders: 0, totalRevenue: 0 });

@@ -24,10 +24,10 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const register = async (name, email, password, company, referralCode) => {
+  const register = async (name, email, password, company) => {
     setLoading(true);
     try {
-      const { data } = await api.post('/auth/register', { name, email, password, company, referralCode });
+      const { data } = await api.post('/auth/register', { name, email, password, company });
       localStorage.setItem('ax_token', data.token);
       localStorage.setItem('ax_user', JSON.stringify(data.user));
       setToken(data.token);

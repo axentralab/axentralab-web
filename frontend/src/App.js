@@ -21,7 +21,6 @@ import BlogPostPage    from './pages/BlogPostPage';
 import ContactPage     from './pages/ContactPage';
 import LoginPage       from './pages/LoginPage';
 import RegisterPage    from './pages/RegisterPage';
-import ReferralPage    from './pages/ReferralPage';
 import QuoteCalculator from './components/common/QuoteCalculator';
 import CartPage         from './pages/CartPage';
 import CheckoutPage     from './pages/CheckoutPage';
@@ -77,7 +76,6 @@ export default function App() {
                 <Route path="/quote"     element={<PublicLayout><QuoteCalculator /></PublicLayout>} />
                 <Route path="/login"     element={<LoginPage />} />
                 <Route path="/register"  element={<RegisterPage />} />
-                <Route path="/referral"  element={<ProtectedRoute><AppLayout><ReferralPage /></AppLayout></ProtectedRoute>} />
                 <Route path="/cart"      element={<PublicLayout><CartPage /></PublicLayout>} />
                 <Route path="/checkout"  element={<ProtectedRoute><PublicLayout><CheckoutPage /></PublicLayout></ProtectedRoute>} />
                 <Route path="/order-success" element={<ProtectedRoute><PublicLayout><OrderSuccessPage /></PublicLayout></ProtectedRoute>} />

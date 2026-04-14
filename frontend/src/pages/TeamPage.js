@@ -1,122 +1,120 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const HERO_BG_IMAGE = process.env.REACT_APP_TEAM_HERO_BG_IMAGE || '/images/team-hero-bg.png';
 
 const TEAM = [
   {
-    name:'Nazat Hossain',
-    role:'Founder & CEO',
-    bio:'Visionary behind Axentralab. Leads strategy, client relationships and overall direction.',
-    photo:'/images/team/nazat.jpg',
-    color:'#8B5CF6',
-    skills:['Leadership','Strategy','Business'],
-    social:{ linkedin:'#' },
-    badge:'Founder',
+    name:     'Nazat Hossain',
+    role:     'Founder & CEO',
+    bio:      'Visionary behind Axentralab. Leads strategy, client relationships and overall direction of the agency. Focused on building real solutions for real businesses.',
+    photo:    '/images/team/nazat.jpg',
+    color:    '#22C55E',
+    skills:   ['Leadership', 'Strategy', 'Business Development', 'Product Vision'],
+    social:   { linkedin: 'https://linkedin.com' },
+    badge:    'Founder',
   },
-
   {
-    name:'Shoumo Shahriar Araf',
-    role:'Full-Stack Developer',
-    bio:'Builds scalable apps with clean architecture.',
-    photo:'/images/team/shoumo.jpg',
-    color:'#3B82F6',
-    skills:['React','Node.js'],
-    social:{ github:'#', linkedin:'#' },
+    name:     'Shoumo Shahriar Araf',
+    role:     'Full-Stack Web Developer',
+    bio:      'Full-time developer at Axentralab. Builds scalable web apps and custom systems from ground up with a focus on performance and clean architecture.',
+    photo:    '/images/team/shoumo.jpg',
+    color:    '#3B82F6',
+    skills:   ['React', 'Node.js', 'MongoDB', 'REST APIs'],
+    social:   { github: 'https://github.com', linkedin: 'https://linkedin.com' },
+    badge:    null,
   },
-
   {
-    name:'Mazharul Islam Sourabh',
-    role:'Full-Stack Developer',
-    bio:'Expert in SaaS & system design.',
-    photo:'/images/team/sourabh.jpg',
-    color:'#A855F7',
-    skills:['React','PostgreSQL'],
-    social:{ github:'#', linkedin:'#' },
+    name:     'Mazharul Islam Sourabh',
+    role:     'Full-Stack Web Developer',
+    bio:      'Full-time developer specialising in custom web applications including POS systems, courier platforms and SaaS products.',
+    photo:    '/images/team/sourabh.jpg',
+    color:    '#A855F7',
+    skills:   ['React', 'Node.js', 'PostgreSQL', 'System Design'],
+    social:   { github: 'https://github.com', linkedin: 'https://linkedin.com' },
+    badge:    null,
   },
-
   {
-    name:'Asadujjaman Atik',
-    role:'Full-Stack Developer',
-    bio:'Focused on eCommerce systems.',
-    photo:'/images/team/atik.jpg',
-    color:'#F59E0B',
-    skills:['React','MongoDB'],
-    social:{ github:'#', linkedin:'#' },
+    name:     'Asadujjaman Atik',
+    role:     'Full-Stack Web Developer',
+    bio:      'Full-time developer focused on e-commerce and business web solutions. Delivers production-ready projects with attention to detail.',
+    photo:    '/images/team/atik.jpg',
+    color:    '#F59E0B',
+    skills:   ['React', 'Node.js', 'E-commerce', 'MongoDB'],
+    social:   { github: 'https://github.com', linkedin: 'https://linkedin.com' },
+    badge:    null,
   },
-
   {
-    name:'Kazi Md Jonayed',
-    role:'UI/UX Designer',
-    bio:'Designs high-converting interfaces.',
-    photo:'/images/team/jonayed.jpg',
-    color:'#EC4899',
-    skills:['Figma','UX'],
-    social:{ linkedin:'#' },
+    name:     'Kazi Md Jonayed',
+    role:     'UI/UX Designer',
+    bio:      'Designs interfaces that look great and convert. Crafts user-centric experiences for web apps, landing pages and digital products.',
+    photo:    '/images/team/jonayed.jpg',
+    color:    '#EC4899',
+    skills:   ['Figma', 'UI Design', 'UX Research', 'Prototyping'],
+    social:   { linkedin: 'https://linkedin.com' },
+    badge:    null,
   },
-
   {
-    name:'Shoshanto Chandra Das',
-    role:'Frontend Developer',
-    bio:'Handles UI implementation and fixes.',
-    photo:'/images/team/shoshanto.jpg',
-    color:'#06B6D4',
-    skills:['React','CSS'],
-    social:{ github:'#' },
+    name:     'Shoshanto Chandra Das',
+    role:     'Web Developer (Part-time)',
+    bio:      'Contributing developer supporting the team with web development tasks, feature builds and ongoing project maintenance.',
+    photo:    '/images/team/shoshanto.jpg',
+    color:    '#06B6D4',
+    skills:   ['React', 'JavaScript', 'CSS', 'Node.js'],
+    social:   { github: 'https://github.com', linkedin: 'https://linkedin.com' },
+    badge:    null,
   },
-
   {
-    name:'F. R. Md. Ali Nabi',
-    role:'Sales Executive',
-    bio:'Handles client acquisition.',
-    photo:'/images/team/alinabi.jpg',
-    color:'#22D3EE',
-    skills:['Sales','Negotiation'],
-    social:{ linkedin:'#' },
+    name:     'F. R. Md. Ali Nabi',
+    role:     'Sales Executive',
+    bio:      'Drives client acquisition and business development. Connects businesses with the right Axentralab solutions to grow their digital presence.',
+    photo:    '/images/team/alinabi.jpg',
+    color:    '#22D3EE',
+    skills:   ['Sales', 'Client Relations', 'Lead Generation', 'Negotiation'],
+    social:   { linkedin: 'https://linkedin.com' },
+    badge:    null,
   },
-
   {
-    name:'Snehashis Nag',
-    role:'Sales Executive',
-    bio:'Manages outreach and deals.',
-    photo:'/images/team/snehashis.jpg',
-    color:'#F97316',
-    skills:['Sales','Marketing'],
-    social:{ linkedin:'#' },
+    name:     'Snehashis Nag',
+    role:     'Sales Executive',
+    bio:      'Focused on growing Axentralab\'s client base. Manages outreach, proposals and long-term client relationships.',
+    photo:    '/images/team/snehashis.jpg',
+    color:    '#F97316',
+    skills:   ['Sales', 'Digital Marketing', 'Client Support', 'Outreach'],
+    social:   { linkedin: 'https://linkedin.com' },
+    badge:    null,
   },
-
-  // 🔥 ADDING NEW 17 MEMBERS
-
-  { name:'Rakib Hasan', role:'Backend Developer', bio:'API & server expert.', photo:'/images/team/user1.jpg', color:'#6366F1', skills:['Node','API'], social:{ github:'#' } },
-  { name:'Tanvir Ahmed', role:'Frontend Developer', bio:'UI builder.', photo:'/images/team/user2.jpg', color:'#14B8A6', skills:['React'], social:{ github:'#' } },
-  { name:'Mehedi Hasan', role:'WordPress Developer', bio:'WP specialist.', photo:'/images/team/user3.jpg', color:'#F43F5E', skills:['WordPress'], social:{ } },
-  { name:'Sakib Rahman', role:'QA Engineer', bio:'Testing & bug fixing.', photo:'/images/team/user4.jpg', color:'#EAB308', skills:['Testing'], social:{ } },
-  { name:'Arif Hossain', role:'DevOps Engineer', bio:'Deploy & CI/CD.', photo:'/images/team/user5.jpg', color:'#0EA5E9', skills:['Docker'], social:{ } },
-  { name:'Nusrat Jahan', role:'UI Designer', bio:'Modern UI creator.', photo:'/images/team/user6.jpg', color:'#D946EF', skills:['Figma'], social:{ } },
-  { name:'Imran Khan', role:'SEO Specialist', bio:'Ranks websites.', photo:'/images/team/user7.jpg', color:'#84CC16', skills:['SEO'], social:{ } },
-  { name:'Rifat Mahmud', role:'Content Writer', bio:'Writes conversion content.', photo:'/images/team/user8.jpg', color:'#F97316', skills:['Writing'], social:{ } },
-  { name:'Jahidul Islam', role:'Support Engineer', bio:'Client support expert.', photo:'/images/team/user9.jpg', color:'#8B5CF6', skills:['Support'], social:{ } },
-  { name:'Hasan Mahmud', role:'Security Analyst', bio:'Handles vulnerabilities.', photo:'/images/team/user10.jpg', color:'#EF4444', skills:['Security'], social:{ } },
-  { name:'Sabbir Hossain', role:'Mobile App Dev', bio:'Builds mobile apps.', photo:'/images/team/user11.jpg', color:'#3B82F6', skills:['React Native'], social:{ } },
-  { name:'Farhan Ahmed', role:'Project Manager', bio:'Manages delivery.', photo:'/images/team/user12.jpg', color:'#8B5CF6', skills:['Management'], social:{ } },
-  { name:'Tariq Islam', role:'Data Analyst', bio:'Analyzes data.', photo:'/images/team/user13.jpg', color:'#06B6D4', skills:['Data'], social:{ } },
-  { name:'Mariam Akter', role:'HR Manager', bio:'Handles recruitment.', photo:'/images/team/user14.jpg', color:'#F472B6', skills:['HR'], social:{ } },
-  { name:'Omar Faruk', role:'Marketing Manager', bio:'Growth strategist.', photo:'/images/team/user15.jpg', color:'#10B981', skills:['Marketing'], social:{ } },
-  { name:'Shakil Ahmed', role:'Automation Engineer', bio:'Builds automation.', photo:'/images/team/user16.jpg', color:'#F59E0B', skills:['Automation'], social:{ } },
-  { name:'Nayeem Islam', role:'Intern Developer', bio:'Learning & contributing.', photo:'/images/team/user17.jpg', color:'#9CA3AF', skills:['Learning'], social:{ } },
+    {
+    name:     'Asadujjaman Atik',
+    role:     'Full-Stack Web Developer',
+    bio:      'Full-time developer focused on e-commerce and business web solutions. Delivers production-ready projects with attention to detail.',
+    photo:    '/images/team/atik.jpg',
+    color:    '#1678f9',
+    skills:   ['React', 'Node.js', 'E-commerce', 'MongoDB'],
+    social:   { linkedin: 'https://linkedin.com' },
+    badge:    null,
+  },
+    {
+    name:     'Majharul Islam Sourabh',
+    role:     'Full-Stack Web Developer',
+    bio:      'Full-time developer specialising in custom web applications including POS systems, courier platforms and SaaS products.',
+    photo:    '/images/team/sourabh.jpg',
+    color:    '#a9f916',
+    skills:   ['React', 'Node.js', 'MongoDB', 'PostgreSQL'],
+    social:   { linkedin: 'https://linkedin.com' },
+    badge:    null,
+  },
 ];
 
-
 const STATS = [
-  { value: '25',   label: 'Core Team Members',   color: '#8B5CF6' },
+  { value: '8+',   label: 'Core Team Members',   color: '#22C55E' },
   { value: '15+',  label: 'Projects Completed',   color: '#3B82F6' },
   { value: '5+',   label: 'Ongoing Projects',     color: '#A855F7' },
-  { value: '7+',  label: 'Happy Clients',        color: '#F59E0B' },
+  { value: '10+',  label: 'Happy Clients',        color: '#F59E0B' },
 ];
 
 const EXPERTISE = [
   { area: 'Web Development',      tags: ['React', 'Node.js', 'MERN', 'Business Sites', 'Corporate Portals'],    color: '#3B82F6' },
-  { area: 'E-commerce',           tags: ['Custom Shops', 'Product Management', 'Payment Integration', 'POS'],   color: '#8B5CF6' },
+  { area: 'E-commerce',           tags: ['Custom Shops', 'Product Management', 'Payment Integration', 'POS'],   color: '#22C55E' },
   { area: 'Custom Web Systems',   tags: ['POS Systems', 'Courier Platforms', 'SaaS Apps', 'Dashboards'],        color: '#F59E0B' },
   { area: 'UI/UX Design',         tags: ['Figma', 'User Research', 'Prototyping', 'Design Systems'],            color: '#A855F7' },
   { area: 'Cybersecurity',        tags: ['Basic Security Audit', 'HTTPS Setup', 'Vulnerability Check', 'OWASP'],color: '#EF4444' },
@@ -188,7 +186,7 @@ function MemberCard({ member, index }) {
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 50%, rgba(6,8,15,0.7) 100%)' }} />
         {member.badge && (
           <div style={{ position: 'absolute', top: 14, left: 14 }}>
-            <span style={{ display: 'inline-block', padding: '3px 10px', borderRadius: 6, background: member.color, color: ['#8B5CF6','#F59E0B'].includes(member.color) ? '#000' : '#fff', fontSize: 9, fontFamily: "'Space Mono',monospace", fontWeight: 900, letterSpacing: 1 }}>
+            <span style={{ display: 'inline-block', padding: '3px 10px', borderRadius: 6, background: member.color, color: ['#22C55E','#F59E0B'].includes(member.color) ? '#000' : '#fff', fontSize: 9, fontFamily: "'Space Mono',monospace", fontWeight: 900, letterSpacing: 1 }}>
               {member.badge.toUpperCase()}
             </span>
           </div>
@@ -244,7 +242,6 @@ function MemberCard({ member, index }) {
 }
 
 export default function TeamPage() {
-  const { t } = useTranslation();
   return (
     <>
       <div style={{ padding: '108px 5% 0', minHeight: '100vh' }}>
@@ -285,29 +282,25 @@ export default function TeamPage() {
       `}</style>
 
       {/* HERO */}
-      <section style={{ position: 'relative', overflow: 'hidden', borderRadius: 20, marginBottom: 64, padding: '72px 20px' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${HERO_BG_IMAGE})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(100deg, rgba(5,10,20,0.9) 0%, rgba(5,10,20,0.72) 48%, rgba(5,10,20,0.9) 100%)' }} />
-        <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', animation: 'fadeUp 0.6s ease both' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '5px 16px', borderRadius: 999, border: '1px solid rgba(139,92,246,0.3)', background: 'rgba(139,92,246,0.07)', marginBottom: 24 }}>
-            <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#8B5CF6', display: 'inline-block', animation: 'pulse 2s infinite' }} />
-            <span style={{ fontFamily: "'Space Mono',monospace", fontSize: 11, color: '#8B5CF6', letterSpacing: 1, textTransform: 'uppercase', fontWeight: 600 }}>The People Behind the Work</span>
-          </div>
-          <h1 style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(32px,5.5vw,68px)', fontWeight: 900, color: '#fff', margin: '0 0 20px', letterSpacing: -2.5, lineHeight: 1.04 }}>
-            Meet the{' '}
-            <span style={{ color: 'transparent', WebkitTextStroke: '1.5px rgba(255,255,255,0.3)' }}>Team</span>
-            <span style={{ color: '#8B5CF6' }}>.</span>
-          </h1>
-          <p style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(14px,1.8vw,18px)', color: 'rgba(255,255,255,0.42)', maxWidth: 520, margin: '0 auto 32px', lineHeight: 1.75 }}>
-            A tight-knit crew of engineers, security specialists and designers — united by one goal: shipping software that just works.
-          </p>
-          <div style={{ display: 'flex', gap: 20, justifyContent: 'center', flexWrap: 'wrap' }}>
-            {['🌏 Remote-first','⚡ Async by default','🔒 Security-obsessed','🚢 Ship fast, fix faster'].map((v, i) => (
-              <span key={i} style={{ fontSize: 12, color: 'rgba(255,255,255,0.28)', fontFamily: "'Space Mono',monospace" }}>{v}</span>
-            ))}
-          </div>
+      <div style={{ textAlign: 'center', marginBottom: 64, animation: 'fadeUp 0.6s ease both' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '5px 16px', borderRadius: 999, border: '1px solid rgba(34,197,94,0.3)', background: 'rgba(34,197,94,0.07)', marginBottom: 24 }}>
+          <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#22C55E', display: 'inline-block', animation: 'pulse 2s infinite' }} />
+          <span style={{ fontFamily: "'Space Mono',monospace", fontSize: 11, color: '#22C55E', letterSpacing: 1, textTransform: 'uppercase', fontWeight: 600 }}>The People Behind the Work</span>
         </div>
-      </section>
+        <h1 style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(32px,5.5vw,68px)', fontWeight: 900, color: '#fff', margin: '0 0 20px', letterSpacing: -2.5, lineHeight: 1.04 }}>
+          Meet the{' '}
+          <span style={{ color: 'transparent', WebkitTextStroke: '1.5px rgba(255,255,255,0.3)' }}>Team</span>
+          <span style={{ color: '#22C55E' }}>.</span>
+        </h1>
+        <p style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(14px,1.8vw,18px)', color: 'rgba(255,255,255,0.42)', maxWidth: 520, margin: '0 auto 32px', lineHeight: 1.75 }}>
+          A tight-knit crew of engineers, security specialists and designers — united by one goal: shipping software that just works.
+        </p>
+        <div style={{ display: 'flex', gap: 20, justifyContent: 'center', flexWrap: 'wrap' }}>
+          {['🌏 Remote-first','⚡ Async by default','🔒 Security-obsessed','🚢 Ship fast, fix faster'].map((v, i) => (
+            <span key={i} style={{ fontSize: 12, color: 'rgba(255,255,255,0.28)', fontFamily: "'Space Mono',monospace" }}>{v}</span>
+          ))}
+        </div>
+      </div>
 
       {/* STATS BAR */}
       <section style={{ borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', marginBottom: 80 }}>
@@ -371,23 +364,23 @@ export default function TeamPage() {
 
       {/* HIRING CTA */}
       <section style={{ maxWidth: 1100, margin: '0 auto', paddingBottom: 100 }}>
-        <div style={{ position: 'relative', background: 'linear-gradient(135deg,rgba(139,92,246,0.09) 0%,rgba(59,130,246,0.06) 100%)', border: '1px solid rgba(139,92,246,0.2)', borderRadius: 24, padding: 'clamp(40px,6vw,72px) clamp(24px,5%,64px)', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', top: '-30%', right: '-10%', width: 380, height: 380, borderRadius: '50%', background: 'radial-gradient(circle,rgba(139,92,246,0.08),transparent 65%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'relative', background: 'linear-gradient(135deg,rgba(34,197,94,0.09) 0%,rgba(59,130,246,0.06) 100%)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 24, padding: 'clamp(40px,6vw,72px) clamp(24px,5%,64px)', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', top: '-30%', right: '-10%', width: 380, height: 380, borderRadius: '50%', background: 'radial-gradient(circle,rgba(34,197,94,0.08),transparent 65%)', pointerEvents: 'none' }} />
           <div style={{ position: 'absolute', bottom: '-20%', left: '10%',  width: 260, height: 260, borderRadius: '50%', background: 'radial-gradient(circle,rgba(59,130,246,0.07),transparent 65%)', pointerEvents: 'none' }} />
           <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 40, alignItems: 'center' }}>
             <div>
-              <span style={{ display: 'inline-block', padding: '3px 12px', borderRadius: 999, border: '1px solid #8B5CF640', background: '#8B5CF610', color: '#8B5CF6', fontSize: 10, fontFamily: "'Space Mono',monospace", letterSpacing: 1, textTransform: 'uppercase', fontWeight: 600, marginBottom: 18 }}>
+              <span style={{ display: 'inline-block', padding: '3px 12px', borderRadius: 999, border: '1px solid #22C55E40', background: '#22C55E10', color: '#22C55E', fontSize: 10, fontFamily: "'Space Mono',monospace", letterSpacing: 1, textTransform: 'uppercase', fontWeight: 600, marginBottom: 18 }}>
                 We're Hiring
               </span>
               <h2 style={{ fontFamily: "'Sora',sans-serif", fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 900, color: '#fff', margin: '0 0 16px', letterSpacing: -1, lineHeight: 1.15 }}>
                 Want to build<br />
-                <span style={{ color: '#8B5CF6' }}>great things with us?</span>
+                <span style={{ color: '#22C55E' }}>great things with us?</span>
               </h2>
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.45)', lineHeight: 1.8, margin: '0 0 28px', maxWidth: 400 }}>
                 We're always looking for sharp engineers, security researchers, and designers who care deeply about their craft. Remote-friendly. Async-first.
               </p>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <Link to="/contact" className="btn-primary" style={{ padding: '13px 28px', background: '#8B5CF6', color: '#000', borderRadius: 12, fontSize: 14, fontWeight: 700, textDecoration: 'none', display: 'inline-block' }}>
+                <Link to="/contact" className="btn-primary" style={{ padding: '13px 28px', background: '#22C55E', color: '#000', borderRadius: 12, fontSize: 14, fontWeight: 700, textDecoration: 'none', display: 'inline-block' }}>
                   Send Your CV →
                 </Link>
                 <Link to="/contact" className="btn-outline" style={{ padding: '13px 24px', fontSize: 14, borderRadius: 12, textDecoration: 'none', display: 'inline-block' }}>
@@ -400,7 +393,7 @@ export default function TeamPage() {
               {[
                 { role: 'React / Node.js Developer',   type: 'Remote · Full-time',  color: '#3B82F6' },
                 { role: 'UI/UX Designer',              type: 'Remote · Part-time',  color: '#A855F7' },
-                { role: 'Sales Executive',             type: 'Remote · Full-time',  color: '#8B5CF6' },
+                { role: 'Sales Executive',             type: 'Remote · Full-time',  color: '#22C55E' },
                 { role: 'Digital Marketing Specialist',type: 'Remote · Part-time',  color: '#F59E0B' },
               ].map((job, i) => (
                 <div key={i}

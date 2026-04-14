@@ -1,20 +1,20 @@
 // Shared status color map — used in AdminPage, DashboardPage, etc.
 export const STATUS_COLORS = {
   pending:   '#F59E0B',
-  paid:      '#8B5CF6',
+  paid:      '#22C55E',
   active:    '#3B82F6',
   completed: '#8B5CF6',
   cancelled: '#EF4444',
   new:       '#3B82F6',
   contacted: '#F59E0B',
-  qualified: '#8B5CF6',
+  qualified: '#22C55E',
   closed:    '#8B5CF6',
 };
 
 // Blog tag / category colors — used in BlogPage, BlogPostPage, HomePage
 export const TAG_COLORS = {
   Cybersecurity:  '#EF4444',
-  'AI Automation':'#8B5CF6',
+  'AI Automation':'#22C55E',
   DevOps:         '#8B5CF6',
   'SaaS Dev':     '#F59E0B',
   'Web Dev':      '#3B82F6',

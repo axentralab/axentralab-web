@@ -203,7 +203,6 @@ function ProfileTab() {
 }
 
 export default function DashboardPage() {
-  const { t } = useTranslation();
   const { user, logout }  = useAuth();
   const navigate          = useNavigate();
   const [orders, setOrders]           = useState([]);
@@ -229,8 +228,7 @@ export default function DashboardPage() {
     { icon: '📊', label: 'Overview',  path: '/dashboard' },
     { icon: '📦', label: 'My Orders', path: '/dashboard/orders' },
     { icon: '👤', label: 'Profile',   path: '/dashboard/profile' },
-    { icon: '�', label: 'Referral',  path: '/referral' },
-    { icon: '�🛒', label: 'Shop',      path: '/services' },
+    { icon: '🛒', label: 'Shop',      path: '/services' },
   ];
 
   return (

@@ -29,7 +29,7 @@ export default function Sidebar({ navItems, user, badge, onLogout }) {
       <div style={{ padding: '0 8px', marginBottom: 28 }}>
         {badge ? (
           <>
-            <div style={{ fontFamily: "'Space Mono',monospace", fontSize: 9, color: '#8B5CF6', letterSpacing: 2, marginBottom: 4, textTransform: 'uppercase' }}>
+            <div style={{ fontFamily: "'Space Mono',monospace", fontSize: 9, color: '#22C55E', letterSpacing: 2, marginBottom: 4, textTransform: 'uppercase' }}>
               {badge}
             </div>
             <div style={{ fontFamily: "'Sora',sans-serif", fontSize: 14, fontWeight: 700, color: '#fff' }}>
@@ -40,7 +40,7 @@ export default function Sidebar({ navItems, user, badge, onLogout }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <div style={{
               width: 38, height: 38, borderRadius: '50%',
-              background: 'linear-gradient(135deg,#8B5CF6,#7C3AED)',
+              background: 'linear-gradient(135deg,#22C55E,#16A34A)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontFamily: "'Sora',sans-serif", fontWeight: 900, fontSize: 16,
               color: '#000', flexShrink: 0,
@@ -74,9 +74,9 @@ export default function Sidebar({ navItems, user, badge, onLogout }) {
               style={{
                 display: 'flex', alignItems: 'center', gap: 10,
                 padding: '10px 12px', borderRadius: 10, marginBottom: 4,
-                background: active ? 'rgba(139,92,246,0.1)' : 'transparent',
-                border: active ? '1px solid rgba(139,92,246,0.2)' : '1px solid transparent',
-                color: active ? '#8B5CF6' : 'rgba(255,255,255,0.55)',
+                background: active ? 'rgba(34,197,94,0.1)' : 'transparent',
+                border: active ? '1px solid rgba(34,197,94,0.2)' : '1px solid transparent',
+                color: active ? '#22C55E' : 'rgba(255,255,255,0.55)',
                 fontSize: 14, fontWeight: active ? 600 : 400,
                 textDecoration: 'none', transition: 'all 0.15s',
               }}

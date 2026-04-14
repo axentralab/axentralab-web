@@ -6,7 +6,7 @@ let idCounter = 0;
 
 const ICONS = { success: '✅', error: '❌', info: 'ℹ️', warning: '⚠️' };
 const COLORS = {
-  success: { bg: 'rgba(139,92,246,0.1)',  border: 'rgba(139,92,246,0.25)',  text: '#8B5CF6' },
+  success: { bg: 'rgba(34,197,94,0.1)',  border: 'rgba(34,197,94,0.25)',  text: '#22C55E' },
   error:   { bg: 'rgba(239,68,68,0.1)',  border: 'rgba(239,68,68,0.25)',  text: '#EF4444' },
   info:    { bg: 'rgba(59,130,246,0.1)', border: 'rgba(59,130,246,0.25)', text: '#3B82F6' },
   warning: { bg: 'rgba(245,158,11,0.1)', border: 'rgba(245,158,11,0.25)', text: '#F59E0B' },
