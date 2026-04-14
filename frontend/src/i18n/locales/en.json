@@ -636,5 +636,37 @@
     "member_badges": {
       "founder": "Founder"
     }
+  },
+  "checkout_page": {
+    "subtitle": "Review your order and complete payment securely.",
+    "customer_details": "👤 Customer Details",
+    "order_items": "📦 Order Items",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "one_time": "One-time",
+    "confirmation_sent": "Confirmation sent to",
+    "confirmation_message": "Order summary and next steps within minutes. Our team follows up within 24 hours.",
+    "payment_summary": "💳 Payment Summary",
+    "at_checkout": "At checkout",
+    "redirecting": "Redirecting…",
+    "pay_with_stripe": "🔒 Pay with Stripe →",
+    "stripe_info": "Redirected to Stripe's secure payment page. Visa, Mastercard, Amex and more accepted.",
+    "items": "items",
+    "item": "item"
+  },
+  "home_page": {
+    "ai_tool": {
+      "generate_button": "⚡ Generate with AI",
+      "generating": "Generating…",
+      "output_label": "OUTPUT",
+      "copy_button": "⧉ Copy",
+      "copied_button": "✓ Copied",
+      "want_custom": "Want custom AI tools for your business?",
+      "lets_talk": "Let's talk →",
+      "topic_placeholder": "Topic / Subject",
+      "tone_label": "Tone",
+      "length_label": "Length",
+      "no_output": "No output."
+    }
   }
 }

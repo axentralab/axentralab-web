@@ -636,5 +636,37 @@
     "member_badges": {
       "founder": "প্রতিষ্ঠাতা"
     }
+  },
+  "checkout_page": {
+    "subtitle": "আপনার অর্ডার পর্যালোচনা করুন এবং নিরাপদে পেমেন্ট সম্পূর্ণ করুন।",
+    "customer_details": "👤 গ্রাহক বিবরণ",
+    "order_items": "📦 অর্ডার আইটেম",
+    "monthly": "মাসিক",
+    "yearly": "বার্ষিক",
+    "one_time": "একবার",
+    "confirmation_sent": "নিশ্চিতকরণ পাঠানো হয়েছে",
+    "confirmation_message": "অর্ডার সারাংশ এবং পরবর্তী পদক্ষেপ কয়েক মিনিটের মধ্যে। আমাদের দল ২৪ ঘন্টার মধ্যে অনুসরণ করে।",
+    "payment_summary": "💳 পেমেন্ট সারাংশ",
+    "at_checkout": "চেকআউটে",
+    "redirecting": "পুনর্নির্দেশিত হচ্ছে…",
+    "pay_with_stripe": "🔒 Stripe দিয়ে পেমেন্ট করুন →",
+    "stripe_info": "Stripe এর নিরাপদ পেমেন্ট পৃষ্ঠায় পুনর্নির্দেশিত। Visa, Mastercard, Amex এবং আরও অনেক কিছু গৃহীত।",
+    "items": "আইটেম",
+    "item": "আইটেম"
+  },
+  "home_page": {
+    "ai_tool": {
+      "generate_button": "⚡ এআই দিয়ে জেনারেট করুন",
+      "generating": "জেনারেট হচ্ছে…",
+      "output_label": "আউটপুট",
+      "copy_button": "⧉ অনুলিপি",
+      "copied_button": "✓ অনুলিপি করা হয়েছে",
+      "want_custom": "আপনার ব্যবসার জন্য কাস্টম এআই টুলস চান?",
+      "lets_talk": "কথা বলি →",
+      "topic_placeholder": "বিষয় / বিষয়",
+      "tone_label": "টোন",
+      "length_label": "দৈর্ঘ্য",
+      "no_output": "কোন আউটপুট নেই।"
+    }
   }
 }

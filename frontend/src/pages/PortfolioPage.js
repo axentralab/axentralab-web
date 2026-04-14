@@ -240,9 +240,47 @@ const PROJECTS = [
       "Sales analytics with charts",
     ],
     liveUrl: "https://client-demo-1.vercel.app/#how-it-works/",
-    featured: true,
+    featured: false,
     isDemo: true,
   },
+  {
+    id: "d14",
+    title: "Booking Site For Local Services",
+    tag: "Local Services",
+    category: "Live",
+    color: "#7594b1",
+    year: "2025",
+    thumbnail: "https://res.cloudinary.com/dwrlbuej9/image/upload/v1776134419/Screenshot_2026-04-14_083936_kommbq.png",
+    desc: "A booking website demo for local services — client portal, booking management system, sales analytics dashboard and inventory management system in one platform.",
+    stack: ["React", "Chart.js", "Node.js", "MongoDB", "JWT"],
+    results: [
+      "Client portal with booking updates",
+      "Booking management system",
+      "Sales analytics with charts",
+    ],
+    liveUrl: "https://tech-wise-connect.lovable.app/",
+    featured: false,
+    isDemo: true,
+  },
+  {
+    id: "d15",
+    title: "Site-Guard — Security Services",
+    tag: "Security Services",
+    category: "Live on our Product Coming Soon............",
+    color: "#7594b1",
+    year: "2025",
+    thumbnail: "https://res.cloudinary.com/dwrlbuej9/image/upload/v1776134419/Screenshot_2026-04-14_083936_kommbq.png",
+    desc: "A security services website demo — client portal, booking management system, sales analytics dashboard and inventory management system in one platform.",
+    stack: ["React", "Chart.js", "Node.js", "MongoDB", "JWT"],
+    results: [
+      "Client portal with booking updates",
+      "Booking management system",
+      "Sales analytics with charts",
+    ],
+    liveUrl: "https://siteguard-guardian.lovable.app",
+    featured: true,
+    isDemo: true,
+  }
 ];
 
 // ── Constants ──────────────────────────────────────────────────────────────────
