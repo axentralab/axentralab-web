@@ -1,6 +1,5 @@
 import { useState, useEffect, memo } from 'react';
 import { useNavigate, useLocation, useMatch } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import api, { apiErrorMessage } from '../services/api';

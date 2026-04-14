@@ -1,6 +1,5 @@
 import { useState, useMemo, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { useTranslation } from 'react-i18next';
 
 // ── Project Data ──────────────────────────────────────────────────────────────
 const PROJECTS = [

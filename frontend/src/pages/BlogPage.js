@@ -1,6 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import api from '../services/api';
 import Skeleton from '../components/Skeleton';
 import { TAG_COLORS } from '../constants/statusColors';

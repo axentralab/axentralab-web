@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 
 const HERO_BG_IMAGE = process.env.REACT_APP_TEAM_HERO_BG_IMAGE || '/images/team-hero-bg.png';
 

@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 
 const PRIMARY  = '#6366F1';
 const ACCENT   = '#8B5CF6';

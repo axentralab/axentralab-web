@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import api from '../services/api';
 
 const HERO_BG_IMAGE = process.env.REACT_APP_CONTACT_HERO_BG_IMAGE || '/images/contact-hero-bg.png';

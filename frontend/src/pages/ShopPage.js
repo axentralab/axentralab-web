@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import ReferralPromoAd from '../components/ui/ReferralPromoAd';
 
 // ─── Design tokens (mirrors site palette) ────────────────────────────────────
