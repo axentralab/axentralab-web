@@ -18,6 +18,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "install:deps": "npm install --legacy-peer-deps",
     "postinstall": "chmod +x node_modules/.bin/react-scripts"
   },
   "browserslist": {
